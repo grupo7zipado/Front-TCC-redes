@@ -27,7 +27,7 @@ const Card = ()=>{
         
             {
             dados.map(e=>(
-                <div class="container">
+              <div class="container">
                 <div class="card">
                     <div>
                         <svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +47,7 @@ const Card = ()=>{
                         </svg>
                     </div>
                 </div>
-                </div>   
+              </div>   
             ))
             }   
         </> 

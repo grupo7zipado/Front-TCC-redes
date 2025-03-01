@@ -20,6 +20,7 @@
     gap: 15px;
 }
 .header-button {
+    margin-left: auto;
     background: #ff6f61;
     color: white;
     border: none;
