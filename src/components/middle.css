@@ -1,0 +1,21 @@
+
+/* Organiza todos os cards existentes*/
+.meio-pagina {
+    position: absolute;
+    top: 8.4vh;
+    left: 0;
+    width: 100vw ;
+    height: 84.6vh;
+ 
+    display: flex;
+    flex-wrap: wrap;
+   
+    overflow-x: hidden;
+    justify-content: center;
+
+} 
+
+/* Remove a barra de rolagem de vista, caso queira apenas estilizar*/
+.meio-pagina::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Edge */
+}
