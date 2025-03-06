@@ -2,14 +2,13 @@
 /* Organiza todos os cards existentes*/
 .meio-pagina {
     position: absolute;
-    top: 9.4vh;
+    top: 6.4vh;
     left: 0;
     width: 100vw ;
-    height: 84.6vh;
- 
+    height: 88.8vh;
     display: flex;
     flex-wrap: wrap;
-   
+   background-color: aqua;
     overflow-x: hidden;
     justify-content: center;
     
