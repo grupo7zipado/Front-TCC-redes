@@ -32,4 +32,11 @@
 }
 .header-button:hover {
     background: #e65a4d;
-}    
+}   
+.button-menu{
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 10px;
+
+}
