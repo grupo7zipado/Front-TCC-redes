@@ -13,17 +13,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #444;
+    border-bottom: 2px solid #333;
 }
 .header-buttons {
     display: flex;
-    gap: 15px;
 }
-.header-button {
+.header-button-menu {
     margin-top: 0.8vh ;
     margin-left: auto;
     margin-bottom: 0.2vw;
-    background: #a52fc8;
+    background: #333;
     border: none;
     padding: 1.5vh 1vw;
     border-radius: 2vh;
@@ -32,17 +31,22 @@
     transition: background 0.8s;
 }
 .header-button:hover {
-    background: #7d3b8b;
+    background: #333;
 }   
-.button-menu{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 2.2vw ;
-   height: 0.5vh;
-   margin: 0;
+
+.header-button-saida{
+    margin-top: 0.8vh ;
+    margin-left: 90vh;
+    margin-bottom: 0.2vw;
+    background: #333;
+    border: none;
+    padding: 1.5vh 1vw;
+    border-radius: 2vh;
+    cursor: pointer;
+    font-size: 1vw;
+    transition: background 0.8s;
 }
-.button-config{
+.button-menu{
    display: flex;
    justify-content: center;
    align-items: center;
