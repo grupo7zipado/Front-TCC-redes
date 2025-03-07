@@ -20,23 +20,39 @@
     gap: 15px;
 }
 .header-button {
+    margin-top: 0.8vh ;
     margin-left: auto;
-    background: #ff6f61;
-    color: white;
+    margin-bottom: 0.2vw;
+    background: #a52fc8;
     border: none;
-    padding: 12px 20px;
-    border-radius: 15px;
+    padding: 1.5vh 1vw;
+    border-radius: 2vh;
     cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s;
+    font-size: 1vw;
+    transition: background 0.8s;
 }
 .header-button:hover {
-    background: #e65a4d;
+    background: #7d3b8b;
 }   
 .button-menu{
-    display: flex;
-   justify-content: space-between;
+   display: flex;
+   justify-content: center;
    align-items: center;
-   margin: 10px;
-
+   width: 2.2vw ;
+   height: 0.5vh;
+   margin: 0;
+}
+.button-config{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 2.2vw ;
+   height: 0.5vh;
+   margin: 0;
+}
+.button-saida{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.2vw;
 }
