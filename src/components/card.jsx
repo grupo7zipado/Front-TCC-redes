@@ -21,16 +21,18 @@ const Card = ()=>{
     const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura"]; // Altere para o tópico desejado
     const [message, setMessage] = useState([]);
     const atualizarValor = (esp_id, chave, novoValor) => {
+      const teste = dados.find((dados) => dados.id === esp_id)
+      console.log(teste);
       
-      if(dados.find((elemento) => elemento.id === esp_id)){
-        setDados((dadosAnteriores) =>
-          dadosAnteriores.map((item) =>
-            item.esp_id === esp_id ? { ...item, [chave]: novoValor } : item
-          )
-        );
-      }else{
-        setDados((prevTermos) => [...prevTermos, {esp_id: esp_id, chave:novoValor}]);
-      }
+      // if(dados.find((elemento) => elemento.id === esp_id)){
+      //   setDados((dadosAnteriores) =>
+      //     dadosAnteriores.map((item) =>
+      //       item.esp_id === esp_id ? { ...item, [chave]: novoValor } : item
+      //     )
+      //   );
+      // }else{
+      //   setDados((prevTermos) => [...prevTermos, {esp_id: esp_id, chave:novoValor}]);
+      // }
     };
     useEffect(() => {
       const client = mqtt.connect(MQTT_BROKER);
@@ -156,28 +158,30 @@ const Card = ()=>{
                 
               */
             dados?
-            dados.map(e=>(
-              <div class="container">
+            dados.map(dado=>(
+              <>
+                <div class="container">
                 <div class="card">
                     <div>
                         <svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
                             <text x="10" y="35" font-family="Arial" font-size="24" fill="#007bff" font-weight="bold">O₂</text>
                             <rect x="40" y="10" width="90" height="40" rx="10" fill="#007bff" opacity="0.2"/>
-                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#007bff" text-anchor="middle" id="spo2-value">{e.oxig_valor}%</text>
+                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#007bff" text-anchor="middle" id="spo2-value">{dado.oxig_valor}%</text>
                         </svg>
                         <svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
                             <text x="10" y="35" font-family="Arial" font-size="24" fill="#ff5733" font-weight="bold">🌡️</text>
                             <rect x="40" y="10" width="90" height="40" rx="10" fill="#ff5733" opacity="0.2"/>
-                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#ff5733" text-anchor="middle" id="temp-value">{e.temp_valor/10} °C</text>
+                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#ff5733" text-anchor="middle" id="temp-value">{dado.temp_valor/10} °C</text>
                         </svg>
                         <svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
                             <text x="10" y="35" font-family="Arial" font-size="24" fill="#e63946" font-weight="bold">❤️</text>
                             <rect x="40" y="10" width="90" height="40" rx="10" fill="#e63946" opacity="0.2"/>
-                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#e63946" text-anchor="middle" id="bpm-value">{e.bpm_valor} BPM</text>
+                            <text x="85" y="38" font-family="Arial" font-size="24" fill="#e63946" text-anchor="middle" id="bpm-value">{dado.bpm_valor} BPM</text>
                         </svg>
                     </div>
                 </div>
               </div>   
+              </>
             ))
             :
             ""
