@@ -7,7 +7,7 @@
     position: absolute;
     background: #333;
     color: white;
-    padding: 20px 2vw;
+    padding: 2.2vh 2vw;
     font-size: 28px;
     font-weight: 600;
     display: flex;
@@ -43,6 +43,7 @@
     cursor: pointer;
 }
 .button-menu{
+   color: white;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -51,6 +52,7 @@
    margin: 0;
 }
 .button-saida{
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,4 +64,6 @@
     display: flex;
     justify-content: flex-start; 
     width: 100%;
+    font-size: 1.9vw;
+
 }
