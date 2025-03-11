@@ -5,7 +5,7 @@
     width: 96vw;
     height: 3.8vh;
     position: absolute;
-    background: #333;
+    background: #242325;
     color: white;
     padding: 2.2vh 2vw;
     font-size: 28px;
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #242325;
 }
 .header-buttons {
     text-align: left;
@@ -25,19 +25,19 @@
 .header-button-menu {
     margin-top: 0.8vh ;
     margin-bottom: 0.2vw;
-    background: #333;
+    background: #242325;
     border: none;
     padding: 1.5vh 1vw;
     cursor: pointer;
 }
 .header-button:hover {
-    background: #333;
+    background: #242325;
 }   
 
 .header-button-saida{
     margin-top: 0.8vh ;
     margin-bottom: 0.2vw;
-    background: #333;
+    background: #242325;
     border: none;
     padding: 1.5vh 1vw;
     cursor: pointer;
@@ -71,7 +71,7 @@
     position: absolute;
     top: 3.9vw;
     left: 0vh;
-    background: #333;
+    background: #242325;
     border-radius: 0.7vh;
     padding: 2vh;
     display: flex;

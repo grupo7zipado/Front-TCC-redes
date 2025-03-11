@@ -12,7 +12,7 @@ function App() {
     <> 
     <Header/>
     {/* <Middle/> */}
-   {/* <Card/> */}
+   <Card/>
     <Footer/>
     </> 
     

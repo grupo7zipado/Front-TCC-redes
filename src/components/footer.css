@@ -1,12 +1,12 @@
 footer {
    
     left: 0;
-    background: #333;
+    background: #242325;
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 2.5vh;
     position: fixed;
     bottom: 0;
     width: 100vw;
-    font-size: 14px;
+    font-size: 1vw;
 }
