@@ -1,45 +1,63 @@
 .container {
   height: 38vh;
-  padding: 30px;
-  margin-top:25px ;
+  padding: 5vh;
+  margin-top: 3vh ;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  align-items: center;
 }
 .title {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
   color: #4b2354;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #4b2354;
-  padding-bottom: 5px;
+  margin-bottom: 2vh;
+  border-bottom: 0.4vh solid #4b2354;
 }
-.card-itens {
+
+/*style cards*/  
+.card{
+  font-family: Arial, sans-serif;
+  font-size: 2vh;
+  font-weight: bold;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.metric {
+  flex-wrap: wrap;
+  width: 18vw;
+  gap: 2vw;
   
+}
+.metric-um {
+  width: 100%;
+  margin-top: 1vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 1vh;
+  border-radius: 1.2vh;
 }
 .bpm {
   background: #f4a3a3;
   color: #b22222;
 }
+
+.metric-dois {
+  width: 5.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vh;
+  border-radius: 1.2vh;
+}
 .temp {
   padding: 1vh 1vw;
   background: #fdb44b;
   color: #d35400;
+}
+
+.metric-tres {
+  width: 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vh;
+  border-radius: 1.2vh;
 }
 .spo2 {
   background: #e0e0e0;

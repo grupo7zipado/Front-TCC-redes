@@ -195,16 +195,16 @@ const Card = ()=>{
                 <div class="card">
                   <div class="title">nome sobrenome</div>      {/*fazer funçao para pegar nome user*/}
 
-                    <div class="metric bpm">
-                         ❤️ <span>100bpm</span>
+                    <div class="metric-um bpm">
+                         ❤️<span>100bpm</span>
                     </div>
           
-                    <div class="metric temp">
-                         🌡️ <span>36°C</span>
+                    <div class="metric-dois temp">
+                        🌡️<span>36°C</span>
                     </div> 
 
-                    <div class="metric spo2">
-                        🩸 <span>99%</span>
+                    <div class="metric-tres spo2">
+                        🩸<span>99%</span>
                     </div>  
 
                     </div>  
