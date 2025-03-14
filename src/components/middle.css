@@ -2,7 +2,7 @@
 /* Organiza todos os cards existentes*/
 .meio-pagina {
     position: absolute;
-    top: 6.4vh;
+    top: 8.48vh;
     left: 0;
     width: 100vw ;
     height: 88.8vh;
@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     overflow-x: hidden;
     justify-content: center;
-    
+    background-color: blanchedalmond;
 } 
 
 /* Remove a barra de rolagem de vista, caso queira apenas estilizar*/

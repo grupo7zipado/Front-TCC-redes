@@ -5,22 +5,7 @@ const Logs = () =>{
     return(
         /* define os logs*/
 <ul class="logset">
-    <li class="com-log">
-        <p class="titulo-log">
-            Nome
-        </p>
-        <label class="info-log">
-            Julio
-        </label>
-    </li>
-    <li class="com-log">
-        <p class="titulo-log">
-            Idade
-        </p>
-        <label class="info-log" >
-            45
-        </label>
-    </li>
+  
     <li class="com-log">
         <p class="titulo-log">
             temperatura

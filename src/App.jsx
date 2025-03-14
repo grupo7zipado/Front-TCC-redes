@@ -11,8 +11,8 @@ function App() {
   return(
     <> 
     <Header/>
-    {/* <Middle/> */}
-   <Card/>
+    <Middle/>
+   {/* <Card/> */}
     <Footer/>
     </> 
     

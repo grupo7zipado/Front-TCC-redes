@@ -1,0 +1,16 @@
+.titular-title{
+    width: 80vw;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    height: 10vh;
+    background-color: #676b8c;
+    margin: 1.4vh 0;
+    border-radius: 6vh;
+}
+
+.nome-title {
+font-size: 4vw;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
