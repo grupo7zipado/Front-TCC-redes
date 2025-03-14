@@ -5,11 +5,12 @@
     top: 6.4vh;
     left: 0;
     width: 100vw ;
-    height: 88.8vh;
+    height: 95vh;
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
     justify-content: center;
+    padding-top: 2vh;
     
 } 
 

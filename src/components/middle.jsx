@@ -1,4 +1,5 @@
 import "./middle.css"
+import Footer from "./footer"
 import Card from "./card"
 import Logs from "./logs"
 
@@ -7,7 +8,9 @@ const Middle = () =>{
     return(
         /* Função apenas para facilitar a organização da pagina*/
 <div class="meio-pagina">
-    <Logs/>
+    {/* <Logs/> */}
+    <Card/>
+    <Footer/>
 </div>
     )
 }
