@@ -1,30 +1,60 @@
-import "./chart.css"
+import { useState } from "react";
+import "./chart.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// const [currentDataType, setCurrentDataType] = useState('temp'); // Controla se estamos mostrando temperatura ou bpm
+
+// // Função para alternar entre temperatura, bpm e oxigenação:
+// const MudarGrafico = () => {
+//     if (currentDataType === 'temp') {
+//         setCurrentDataType('temp');
+//       } else if (currentDataType === 'bpm') {
+//         setCurrentDataType('bpm');
+//       } else {
+//         setCurrentDataType('ox');
+//       } 
+// };
+
 const data = [
-  { name: 'Jan', uv: 4000, pv: 2400, amt: 2400 },
-  { name: 'Feb', uv: 3000, pv: 1398, amt: 2210 },
-  { name: 'Mar', uv: 2000, pv: 9800, amt: 2290 },
-  { name: 'Apr', uv: 2780, pv: 3908, amt: 2000 },
-  { name: 'May', uv: 1890, pv: 4800, amt: 2181 },
-  { name: 'Jun', uv: 2390, pv: 3800, amt: 2500 },
-  { name: 'Jul', uv: 3490, pv: 4300, amt: 2100 },
+  { time: '14:00' , temp: 36.4, bpm: 95, ox: 98 },
+  { time: '14:05' , temp: 36.8, bpm: 99, ox: 97 },
+  { time: '14:00' , temp: 36.4, bpm: 95, ox: 98 },
+  { time: '14:00' , temp: 37.0, bpm: 102, ox: 94 },
+  { time: '14:00' , temp: 37.2, bpm: 105, ox: 96 },
+  { time: '14:00' , temp: 37.0, bpm: 100, ox: 98 },
+  { time: '14:00' , temp: 36.9, bpm: 98, ox: 99 },
+
 ];
 
 const GraficoLog = () => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="amt" stroke="#ff7300" />
-      </LineChart>
-    </ResponsiveContainer>
+    <section class="grafico-area">
+
+        <ul class="filtro-graphics">
+            {/* <li onClick={MudarGrafico} class=" style-button"> Temperatura</li> */}
+            <li class=" style-button"> BPM</li>
+            <li class=" style-button"> oxidação</li>
+        </ul>
+        {/* <ResponsiveContainer  width="70%" height={400}>
+        <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            {currentDataType === 'temp' && (
+            <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+          )}
+          {currentDataType === 'bpm' && (
+            <Line type="monotone" dataKey="bpm" stroke="#82ca9d" />
+          )}
+          {currentDataType === 'ox' && (
+            <Line type="monotone" dataKey="ox" stroke="#ff7300" />
+          )}
+        </LineChart>
+        </ResponsiveContainer> */}
+
+    </section>
   );
 };
 
