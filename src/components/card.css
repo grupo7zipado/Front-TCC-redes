@@ -1,9 +1,9 @@
 .container {
-  height: 38vh;
-  padding: 5vh;
-  margin-top: 3vh ;
+  height: 24vh;
+  padding: 0 0.5vh;
+  margin-top: 1vh ;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 .title {
@@ -20,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 18vw;
-  gap: 2vw;
+  gap:0.8vh;
   
 }
 .metric-um {
@@ -38,12 +38,13 @@
 }
 
 .metric-dois {
-  width: 5.5vw;
+  width: 7.1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1vh;
+  padding: 0.1vh;
   border-radius: 1.2vh;
+  margin-bottom: 1vw;
 }
 .temp {
   padding: 1vh 1vw;
@@ -52,12 +53,13 @@
 }
 
 .metric-tres {
-  width: 6vw;
+  width: 7.5vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1vh;
   border-radius: 1.2vh;
+  margin-bottom: 1vw;
 }
 .spo2 {
   background: #e0e0e0;

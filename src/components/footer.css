@@ -5,7 +5,7 @@ footer {
     color: white;
     text-align: center;
     padding: 2.5vh;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100vw;
     font-size: 1vw;
