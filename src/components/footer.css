@@ -1,12 +1,14 @@
 footer {
-   
+    position: relative;
     left: 0;
+    top:27vh;
     background: #242325;
     color: white;
     text-align: center;
     padding: 2.5vh;
     position: relative;
-    bottom: 0;
+    
     width: 100vw;
+    height: 2vh;
     font-size: 1vw;
 }

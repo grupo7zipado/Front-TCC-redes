@@ -1,15 +1,14 @@
 .grafico-area{
-    background-color: brown;
+   
     display: flex;
     margin: 2%;
     width: 80vw;
-
+    height: 46vh;
 }
 
 .filtro-graphics{
     display: flex;
     flex-direction: column;
-    background-color: blueviolet;
     width: 12vw;
     height: 20vh;
     justify-content: space-around;
