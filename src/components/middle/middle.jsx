@@ -17,7 +17,7 @@ const Middle = () =>{
                 <Card/>
                 :
                 <>
-                <Title/>
+                {/* <Title/>
                     <GraficoLog/>
                     <Logs/>
                     <Logs/>
@@ -30,7 +30,7 @@ const Middle = () =>{
                     <Logs/>
                     <Logs/>
                     <Logs/>
-                    <Logs/> 
+                    <Logs/>  */}
                 </>
             } 
         </div>

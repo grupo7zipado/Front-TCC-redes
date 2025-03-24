@@ -3,6 +3,7 @@ import ConnApi from "../../conn"
 import { useState } from "react"
 import { useEffect } from "react"
 import mqtt from "mqtt"
+import Modal from "../modal/modal"
 const Card = ()=>{
     const [dados, setDados] = useState([
       {
@@ -97,31 +98,46 @@ const Card = ()=>{
       }
     ])
 
-       
+   const Conteudo = ()=>{
+    return(
+      <>
+        a
+      </>
+    )
+
+   }    
       
-      
+   const OpenModal = (id) => {
+    console.log(id)
+    const dModal = document.getElementById(`${id}`)
+    dModal.showModal()
+  }   
     return(
         <>
-        
-            {
-              
+          {
             dados?
             dados.map(dado=>(
               <>
-              <div class="container">
-                <div class="card">
-                  <div class="title">{dado.usu_nome}</div>      
-                    <div class="metric-um bpm">
-                         ❤️<span>{dado.bpm_valor}bpm</span>
-                    </div>
-                    <div class="metric-dois temp">
+                <div class="container" 
+                  onClick={
+                    
+                    () => {OpenModal(dado.use_id)}
+                  }
+                >
+                  <div class="card">
+                    <div class="title">{dado.usu_nome}</div>      
+                      <div class="metric-um bpm">
+                        ❤️<span>{dado.bpm_valor}bpm</span>
+                      </div>
+                      <div class="metric-dois temp">
                         🌡️<span>{dado.temp_valor}°C</span>
-                    </div>
-                    <div class="metric-tres spo2">
+                      </div>
+                      <div class="metric-tres spo2">
                         🩸<span>{dado.oxig_valor}%</span>
-                    </div>  
+                      </div>  
                     </div>  
                   </div>  
+                  <Modal dialog={dado.use_id} conteudo={<Conteudo/>}/>
               </>
             ))
             :
