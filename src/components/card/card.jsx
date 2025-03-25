@@ -4,6 +4,9 @@ import { useState } from "react"
 import { useEffect } from "react"
 import mqtt from "mqtt"
 import Modal from "../modal/modal"
+import Title from "../title"
+import GraficoLog from "../chart"
+import Logs from "../logs"
 const Card = ()=>{
     const [dados, setDados] = useState([
       {
@@ -101,7 +104,9 @@ const Card = ()=>{
    const Conteudo = ()=>{
     return(
       <>
-        a
+        <Title/>
+        <GraficoLog/>
+        <Logs/>
       </>
     )
 
