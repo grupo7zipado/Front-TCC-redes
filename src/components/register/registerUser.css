@@ -1,0 +1,12 @@
+.register-user{
+  height: 60%;
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Corrige o deslocamento */
+  background-color:aliceblue ;
+  color: black;
+  border-radius: 1.6vw ;
+  background-color: rgba(159, 158, 243, 0.5);
+}

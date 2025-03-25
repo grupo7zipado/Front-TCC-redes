@@ -1,5 +1,5 @@
 .logset{
-    background-color: #caccd2;
+    background-color: #1949d8;
     width: 95vw;
     height: 5vh;
     display: flex;
@@ -20,7 +20,7 @@
 }
 .titulo-log{
     font-size: 0.8vw;
-    color: #dda8ff;
+    color: #000003;
 }
 
 .info-log{
