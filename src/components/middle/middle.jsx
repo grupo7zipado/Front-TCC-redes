@@ -5,18 +5,24 @@ import GraficoLog from "../chart"
 import Title from "../title"
 import Card from "../card/card"
 import { useState } from "react"
+import Modal from "../modal/modal"
+import { useEffect } from "react"
 
 const Middle = () =>{
-    const [ pagina, setPagina ] = useState("card");
+
+
+
+    const [ userData, setUserData] = useState();
+
+
+
     return(
         /* Função apenas para facilitar a organização da pagina*/
         <div class="meio-pagina">
             {
-                pagina ===  "card"
-                ?
-                <Card/>
-                :
                 <>
+                    <Card setUserData = {setUserData} />
+
                 {/* <Title/>
                     <GraficoLog/>
                     <Logs/>
@@ -33,6 +39,7 @@ const Middle = () =>{
                     <Logs/>  */}
                 </>
             } 
+
         </div>
     )
 }

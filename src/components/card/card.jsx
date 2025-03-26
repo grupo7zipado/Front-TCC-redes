@@ -7,7 +7,7 @@ import Modal from "../modal/modal"
 import Title from "../title"
 import GraficoLog from "../chart"
 import Logs from "../logs"
-const Card = ()=>{
+const Card = ({setUserData})=>{
     const [dados, setDados] = useState([
       {
         "use_id": 2,
@@ -101,48 +101,35 @@ const Card = ()=>{
       }
     ])
 
-   const Conteudo = ()=>{
-    return(
-      <>
-        <Title/>
-        <GraficoLog/>
-        <Logs/>
-      </>
-    )
-
-   }    
       
-   const OpenModal = (id) => {
-    console.log(id)
-    const dModal = document.getElementById(`${id}`)
-    dModal.showModal()
-  }   
     return(
         <>
           {
             dados?
             dados.map(dado=>(
               <>
-                <div class="container" 
+                <div className="container wmin200 m001 " 
                   onClick={
-                    
-                    () => {OpenModal(dado.use_id)}
+                    () => {
+                      setUserData(dado.usu_id);
+                    }
                   }
                 >
-                  <div class="card">
+                  <div class="card wmin200">
                     <div class="title">{dado.usu_nome}</div>      
-                      <div class="metric-um bpm">
+                      <div class="metric-um bpm w1">
                         ❤️<span>{dado.bpm_valor}bpm</span>
                       </div>
-                      <div class="metric-dois temp">
-                        🌡️<span>{dado.temp_valor}°C</span>
+                      <div className="df w1 ac jcsb ">
+                        <div class="metric-dois temp w040">
+                          🌡️<span>{dado.temp_valor}°C</span>
+                        </div>
+                        <div class="metric-tres spo2 w040">
+                          🩸<span>{dado.oxig_valor}%</span>
+                        </div>  
                       </div>
-                      <div class="metric-tres spo2">
-                        🩸<span>{dado.oxig_valor}%</span>
-                      </div>  
                     </div>  
                   </div>  
-                  <Modal dialog={dado.use_id} conteudo={<Conteudo/>}/>
               </>
             ))
             :

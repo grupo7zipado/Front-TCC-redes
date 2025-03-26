@@ -26,7 +26,7 @@ const data = [
 const GraficoLog = () => {
   const [mudarGrafico, setMudarGrafico] = useState('temp');
   return (
-    <section className="grafico-area">
+    <section className="reset grafico-area ">
 
         <ul class="filtro-graphics">
             <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
