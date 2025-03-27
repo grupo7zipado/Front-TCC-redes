@@ -108,14 +108,14 @@ const Card = ({setUserData})=>{
             dados?
             dados.map(dado=>(
               <>
-                <div className="container wmin200 m001 " 
+                <div className="container wmin250 m001 " 
                   onClick={
                     () => {
                       setUserData(dado.usu_id);
                     }
                   }
                 >
-                  <div class="card wmin200">
+                  <div class="card wmin250">
                     <div class="title">{dado.usu_nome}</div>      
                       <div class="metric-um bpm w1">
                         ❤️<span>{dado.bpm_valor}bpm</span>
