@@ -3,11 +3,12 @@
 .meio-pagina {
     position: absolute;
     width: 100vw ;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
     justify-content: center;
+    top: 8.2vh;
     
   
 } 
