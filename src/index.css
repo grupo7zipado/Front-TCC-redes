@@ -15,23 +15,7 @@
 }
 
 /* INICIO-HEADER */
-.header {
-  top: 0;
-  left: 0;
-  margin: 0;
-  width: 96vw;
-  height: 3.8vh;
-  position: absolute;
-  background: #333;
-  color: white;
-  padding: 20px 2vw;
-  font-size: 28px;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #333;
-}
+
 .header-buttons {
   text-align: left;
   width: 100%;
@@ -68,94 +52,6 @@
 }
 
 /* FINAL-MIDDLE */
-
-
-/* INICIO-CARDS */
-.container {
-  height: 38vh;
-  /* padding: 30px; */
-  margin-top:25px ;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-.card {
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-    margin: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  }
-  .card h3 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  .alert {
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 15px;
-  }
-  .alert-bpm {
-    color: #ff4d4d;
-  }
-  .alert-temp {
-    color: #ffcc00;
-  }
-  .alert-oxigenio {
-    color: #00b300;
-  }
-  .card p {
-    font-weight: bold;
-    color: #333;
-    font-size: 30px;
-    margin: 10px 0;
-  }
-  .card span {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  .card img {
-    height: 30px;
-  }
-  .card .container_heart{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    padding: 2pxpx;
-    border-radius:20px;
-    border: 20px;
-  }
-
-  /* FINAL-CARDS */
-
-
-  /* INICIO-FOOTER */
-  footer {
-    left: 0;
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    font-size: 14px;
-}
-
-/* FINAL-FOOTER */
-
-
 
 
 

@@ -26,7 +26,7 @@ const data = [
 const GraficoLog = () => {
   const [mudarGrafico, setMudarGrafico] = useState('temp');
   return (
-    <section className="reset grafico-area ">
+    <section className="reset grafico-area df ac jcc ">
 
         <ul class="filtro-graphics">
             <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
@@ -34,28 +34,30 @@ const GraficoLog = () => {
             <li onClick={() => setMudarGrafico("ox")} className=" style-button"> oxidação</li>
         </ul>
         
-          <ResponsiveContainer  width="70%" height={400}>
-          <LineChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="time" />
-              <YAxis domain={'auto'} />
-              <Tooltip />
-              <Legend   />
-         
+          <div className="graficoEstilo">
+            <ResponsiveContainer  width="100%" height={400}>
+            <LineChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="time" />
+                <YAxis domain={'auto'} />
+                <Tooltip />
+                <Legend   />
+          
 
-              <Line 
-                key={mudarGrafico} 
-                type="monotone" 
-                dataKey={mudarGrafico} 
-                stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
-                isAnimationActive={true} 
-                animationDuration={800} 
-              />
+                <Line 
+                  key={mudarGrafico} 
+                  type="monotone" 
+                  dataKey={mudarGrafico} 
+                  stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
+                  isAnimationActive={true} 
+                  animationDuration={800} 
+                />
 
 
 
-          </LineChart>
-          </ResponsiveContainer>
+            </LineChart>
+            </ResponsiveContainer>
+          </div>
        
 
     </section>

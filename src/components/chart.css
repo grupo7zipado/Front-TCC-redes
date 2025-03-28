@@ -2,14 +2,17 @@
     padding: 1vw 3vh;
     display: flex;
     margin: 2%;
-    width: 80vw;
-    height: 46vh;
+    width: 80%;
+    height: 50%;
 }
-
+.graficoEstilo{
+    width: 70%;
+}
 .filtro-graphics{
     display: flex;
     flex-direction: column;
-    width: 12vw;
+    width: 15%;
+    min-width: 140px;
     height: 20vh;
     justify-content: space-around;
 
@@ -25,4 +28,27 @@
 .style-button:hover{
     scale: calc(1.12);
 
+}
+
+@media (max-width: 768px) {
+    .graficoEstilo{
+        width: 100%;
+    }
+    .grafico-area{
+        padding: 1vw 3vh;
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+        width: 90%;
+        height: 70%;
+    }
+    .filtro-graphics{
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+        min-width: 140px;
+        height: 15vh;
+        justify-content: space-around;
+    
+    }
 }
