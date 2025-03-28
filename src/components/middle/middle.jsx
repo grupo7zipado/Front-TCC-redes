@@ -22,23 +22,15 @@ const Middle = () =>{
             {
                 <>
                     {/* <Card setUserData = {setUserData} /> */}
-                    <Title/>
+                     <Title/>
                     <GraficoLog/>
-                    <Logs/>
-                {/* <Title/>
-                    <GraficoLog/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>
-                    <Logs/>  */}
+                    <Logs/> 
+                    <Logs/> 
+                    <Logs/> 
+                    <Logs/> 
+                    <Logs/> 
+                    <Logs/> 
+                
                 </>
             } 
 
