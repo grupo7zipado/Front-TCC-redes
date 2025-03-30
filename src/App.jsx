@@ -13,9 +13,9 @@ function App() {
         <>
             <div className="df ac jcc ww1 hh1 fdc">
 
-                <Title/>
+                {/* <Title/>
                 <GraficoLog/>
-                <Logs/>
+                <Logs/> */}
             </div>
         </>
     )
@@ -23,8 +23,9 @@ function App() {
 
   return(
     <> 
+      
       <Main/>
-      {/* <RegisterUser/> */}
+      <RegisterUser/>
       {/* <TelaGrafico/> */}
 
     </> 
