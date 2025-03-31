@@ -15,11 +15,21 @@
 
 /*style cards*/  
 .card{
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-family: Arial, sans-serif;
   font-size: 2vh;
   font-weight: bold;
   display: flex;
   flex-wrap: wrap;
+  min-width: 250px;
   width: 18vw;
   gap:0.8vh;
   
