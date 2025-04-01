@@ -1,7 +1,5 @@
 .grafico-area{
-    padding: 1vw 3vh;
     display: flex;
-    margin: 2%;
     width: 80%;
     height: 50%;
 }
@@ -40,11 +38,10 @@
         width: 100%;
     }
     .grafico-area{
-        padding: 1vw 3vh;
         display: flex;
         flex-direction: column;
-        margin: 2%;
-        width: 100%;
+        width: 90%;
+        margin-right: 8%;
         height: 70%;
     }
     .filtro-graphics{

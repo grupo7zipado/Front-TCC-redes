@@ -29,7 +29,7 @@ const Middle = () =>{
                     <Logs/> 
                     <Logs/> 
                     <Logs/> 
-                    <Logs/> 
+                    <Logs/>  
                 
                 </>
             } 
