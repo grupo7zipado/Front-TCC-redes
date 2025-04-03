@@ -132,16 +132,24 @@
 .wmin300{
   min-width: 300px;
 }
+.wmin600{
+    min-width: 600px;
+}
 
+.wmax090{
+    max-width: 90%;
+}
 .hh1{
   height: 100vh;
 }
 
+
 .h1{
     height: 100%;
 }
-
-
+.h050{
+    height: 50%;
+}
 .h50{
     height: 50px;
 }
@@ -150,6 +158,12 @@
 }
 .h100{
     height: 100px;
+}
+.h200{
+    height: 200px;
+}
+.h400{
+    height: 400px;
 }
 .hmin100{
     min-height: 100px;
@@ -203,6 +217,12 @@
 
 .fs1{
    font-size: 1rem; 
+}
+.fs1_5{
+    font-size: 1.5rem;
+}
+.fs2{
+    font-size: 2rem;
 }
 
 
