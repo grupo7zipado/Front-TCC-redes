@@ -1,6 +1,4 @@
 .register-container {
-  width: 40%;
-  height: 55%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,7 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: #2e2e3a;
-  padding: 2.5vh;
+  padding: 8.5vh;
   border-radius: 3vh;
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
@@ -25,7 +23,7 @@ h2 {
     display: flex;
     gap: 4vh;
     background-color: #3a3a4a;
-    padding: 2vh;
+    padding: 3vw 5vh;
     border-radius: 2vh;
 }
 
@@ -51,11 +49,15 @@ h2 {
 }
 
 .input-field {
-    margin-right: 1vh;
-    width: 90%;
+    height: 25%;
+    width: 100%;
     background-color: #2e2e3a;
     color: #ffffff;
-    padding: 0.7vw  1.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
     border-radius: 1.5vh;
     border: none;
     outline: none;
