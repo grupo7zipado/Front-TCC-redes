@@ -1,6 +1,43 @@
 .usuariosesp{
-    background-color: red;
+    background-color: #242325;
 }
-.usuariosespcorpo{
-    background-color: blue;
+
+.cadastrar-button{
+    width: 55%;
+    border-radius: 2.3vh;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    color: #242325;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cadastrar-button:hover{
+    background-color: #f0f0f0;
+}
+
+.usuariosespcorpointerno{
+    background-color: #f0f0f0;
+    color: #242325;
+}
+.selectue{
+    text-align: center;
+    color: #fff;
+    background-color: #242325;
+}
+
+@media (max-width: 768px) {
+    .usuariosesp{
+        height: 400px;
+    }
+    .titleselect{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .w045_80{
+        width: 80%;
+        text-align: center;
+    }
 }

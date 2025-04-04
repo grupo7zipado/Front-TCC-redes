@@ -24,8 +24,8 @@ function App() {
   return(
     <> 
       
-      {/* <Main/> */}
-      <RegisterUser/>
+      <Main/>
+      {/* <RegisterUser/> */}
       {/* <TelaGrafico/> */}
 
     </> 

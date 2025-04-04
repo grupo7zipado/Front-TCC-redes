@@ -34,17 +34,7 @@
 /*INICIO-MIDDELE */
 
 /* Organiza todos os cards existentes*/
-.meio-pagina {
-  position: absolute;
-  left: 0;
-  width: 100vw ;
-  height: 91.5vh;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-x: hidden;
-  justify-content: center;
-  
-} 
+
 
 /* Remove a barra de rolagem de vista, caso queira apenas estilizar*/
 .meio-pagina::-webkit-scrollbar {
@@ -150,6 +140,9 @@
 .h050{
     height: 50%;
 }
+.h30{
+    height: 30px;
+}
 .h50{
     height: 50px;
 }
@@ -161,6 +154,9 @@
 }
 .h200{
     height: 200px;
+}
+.h300{
+    height: 300px;
 }
 .h400{
     height: 400px;
@@ -183,6 +179,10 @@
     max-height: 90vh;
 }
 
+.pt20{
+    padding-top: 20px;
+}
+
 .p005{
     padding: 5%;
 }
@@ -191,6 +191,9 @@
 }
 .p002{
     padding: 2%;
+}
+.mt20{
+    margin-top: 20px;
 }
 .m004{
     margin: 4%;
@@ -282,7 +285,15 @@
 }
 
 
-
+.tal{
+    text-align: left;
+}
+.tar{
+    text-align: right;
+}
+.tac{
+    text-align: center;
+}
 
 
 

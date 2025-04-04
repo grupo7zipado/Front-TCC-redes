@@ -61,47 +61,51 @@ const Middle = () =>{
             },
         ]
         return(
-            <div className="usuariosesp df jcc ac fdc w600 h400 wmax090">
+            <div className="usuariosesp df jcsa ac fdc w600 h300 wmax090">
                 <div className="fs1_5 p002">
                     CADASTRO USUÁRIO ESP
                 </div>
-                <div className="usuariosespcorpo w080 h050">
-                    <div className="df fdr">
-                        <div>
-                            USUARIO SELECIONADO
+                <div className="usuariosespcorpo w1 h050 df jcc ">
+                    <div className="usuariosespcorpointerno w080 h1 df fdc ac jcsa">
+                        <div className="titleselect df fdr w1 df ac jcsa mt20">
+                            <div  className=" w045_80 w045 tal">
+                                USUARIO SELECIONADO
+                            </div>
+                            <select name="usuario" className="selectue w045_80 w045 h30" id="usuario">
+                                <option value="" selected hidden></option>
+                                {
+                                    usuarios
+                                    ?
+                                    usuarios.map(
+                                        usuario =>
+                                            <option value={usuario.usu_id}>{usuario.usu_nome}</option>
+                                    )
+                                    :
+                                    ""
+                                }
+                            </select>
                         </div>
-                        <select name="usuario" id="usuario">
-                            {
-                                usuarios
-                                ?
-                                usuarios.map(
-                                    usuario =>
-                                        <option value={usuario.usu_id}>{usuario.usu_nome}</option>
-                                )
-                                :
-                                ""
-                            }
-                        </select>
-                    </div>
-                    <div className="df fdr">
-                        <div>
-                            ESP SELECIONADO
+                        <div className="titleselect df fdr w1 df ac jcsa mt20">
+                            <div className="w045_80 w045 tal">
+                                ESP SELECIONADO
+                            </div>
+                            <select name="esp" className="selectue w045_80 w045 h30" id="esp">
+                                <option value="" selected hidden></option>
+                                {
+                                    esps
+                                    ?
+                                    esps.map(
+                                        esp =>
+                                            <option value={esp.esp_id}>{esp.esp_mac}</option>
+                                    )
+                                    :
+                                    ""
+                                }
+                            </select>
                         </div>
-                        <select name="esp" id="esp">
-                            {
-                                esps
-                                ?
-                                esps.map(
-                                    esp =>
-                                        <option value={esp.esp_id}>{esp.esp_mac}</option>
-                                )
-                                :
-                                ""
-                            }
-                        </select>
                     </div>
                 </div>
-                <input type="button" value="ANEXAR ESP" />
+                <input type="button" value="ANEXAR ESP" className="cadastrar-button h50"/>
             </div>
         )
     }
