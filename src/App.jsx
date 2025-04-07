@@ -25,8 +25,6 @@ function App() {
     <> 
       
       <Main/>
-      {/* <RegisterUser/> */}
-      {/* <TelaGrafico/> */}
 
     </> 
   )

@@ -68,6 +68,9 @@
 .w1{
     width: 100%;
 }
+.w090{
+    width: 90%;
+}
 .w080{
     width: 80%;
 }
@@ -93,6 +96,9 @@
 }
 .w020{
     width: 20%;
+}
+.w160{
+    width: 160px;
 }
 .w200{
     width: 200px;
@@ -151,6 +157,9 @@
 }
 .h100{
     height: 100px;
+}
+.h160{
+    height: 160px;
 }
 .h200{
     height: 200px;
@@ -270,6 +279,10 @@
 }
 .tac{
     text-align: center;
+}
+
+.br5{
+    border-radius: 5px;
 }
 
 .br20{

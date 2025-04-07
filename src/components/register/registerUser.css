@@ -1,15 +1,8 @@
 .register-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: #2e2e3a;
-  padding: 8.5vh;
-  border-radius: 3vh;
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
 
@@ -23,18 +16,14 @@ h2 {
     display: flex;
     gap: 4vh;
     background-color: #3a3a4a;
-    padding: 3vw 5vh;
-    border-radius: 2vh;
 }
 
 .profile-pic {
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1e1e28;
-    width: 9vw;
-    height: 18vh;
-    border-radius: 0.8vh;
 }
 
 .profile-text {
@@ -45,6 +34,8 @@ h2 {
 .form-fields {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
     gap: 1vh;
 }
 
@@ -76,4 +67,19 @@ h2 {
 
 .submit-button:hover {
     background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+    .usuariosesp{
+        height: 400px;
+    }
+    .titleselect{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .w045_80{
+        width: 80%;
+        text-align: center;
+    }
 }
