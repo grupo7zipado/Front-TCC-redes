@@ -1,7 +1,4 @@
 .register-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #2e2e3a;
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
@@ -69,17 +66,3 @@ h2 {
     background-color: #f0f0f0;
 }
 
-
-@media (max-width: 768px) {
-    .usuariosesp{
-        height: 400px;
-    }
-    .titleselect{
-        flex-direction: column;
-        gap: 10px;
-    }
-    .w045_80{
-        width: 80%;
-        text-align: center;
-    }
-}

@@ -2,16 +2,11 @@ import './registerUser.css'
 
 const RegisterUser = () => {
     return (
-        <div className="register-container jcsa w600 h400 br20 wmax090">
+        <div className="register-container fdc ac df jcsa w600 h400 br20 wmax090">
             <h2 className='fs1_5'>— CADASTRO DE USUÁRIO —</h2>
             <div className="form-wrapper jcc w090 h050 br20 wmax090">
-                <div className="df  ac w035">
-                    <div className="profile-pic h160 w160">
-                        <div className="profile-text">FOTO DE PERFIL</div>
-                    </div>
-                </div>
-                <div className="form-fields w050">
-                    <input type="text" placeholder="NOME" className="input-field" />
+                <div className="form-fields w080">
+                    <input type="text" placeholder="NOME" className="input-field " />
                     <input type="text" placeholder="SOBRENOME" className="input-field" />
                     <input type="date" className="input-field" />
                 </div>
