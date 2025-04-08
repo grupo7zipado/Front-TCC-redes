@@ -1,7 +1,7 @@
 .grafico-area{
     display: flex;
     width: 80%;
-    height: 50%;
+    height: 75%;
 }
 .graficoEstilo{
     width: 70%;
@@ -42,7 +42,7 @@
         flex-direction: column;
         width: 90%;
         margin-right: 8%;
-        height: 70%;
+        margin-bottom: 5%;
     }
     .filtro-graphics{
         margin-top: 5%;
