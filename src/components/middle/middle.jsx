@@ -24,15 +24,15 @@ const Middle = () =>{
         <div class="meio-pagina">
             {
                 <>
-                    {/* <Card setUserData = {setUserData} /> */}
-                    <Title/>
+                    <Card setUserData = {setUserData} />
+                    {/* <Title/>
                     <GraficoLog/>
                     <Logs/> 
                     <Logs/> 
                     <Logs/> 
                     <Logs/> 
                     <Logs/> 
-                    <Logs/>  
+                    <Logs/>   */}
                     {/* <UsuarioEsp/> */}
                     {/* <RegisterUser/> */}
                 </>

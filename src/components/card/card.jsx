@@ -100,7 +100,18 @@ const Card = ({setUserData})=>{
         "oxig_valor": "99"
       }
     ])
-
+    useEffect( ()=>{
+      const fetchData = async () =>{
+        try {
+          const resposta = await ConnApi.get("/lastDataUsers")
+          console.log(resposta);
+          setDados(resposta.data.data)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchData();
+    },[])
       
     return(
         <>

@@ -36,14 +36,15 @@
 @media (max-width: 768px) {
     .graficoEstilo{
         width: 100%;
+        margin-right: 8%;
     }
     .grafico-area{
         display: flex;
         flex-direction: column;
         width: 90%;
-        margin-right: 8%;
         margin-bottom: 5%;
     }
+
     .filtro-graphics{
         margin-top: 5%;
         display: flex;
