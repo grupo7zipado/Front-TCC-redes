@@ -18,88 +18,9 @@ const Card = ({setUserData})=>{
         "temp_valor": "67",
         "bpm_valor": "80",
         "oxig_valor": "28"
-      },
-      {
-        "use_id": 11,
-        "usu_id": 3,
-        "esp_id": 4,
-        "usu_nome": "Bruno Henrique dos Santos",
-        "usu_nascimento": "1998-07-15T03:00:00.000Z",
-        "temp_valor": "360",
-        "bpm_valor": "96",
-        "oxig_valor": "97"
-      },
-      {
-        "use_id": 13,
-        "usu_id": 4,
-        "esp_id": 4,
-        "usu_nome": "Camila Fernanda Oliveira",
-        "usu_nascimento": "2001-12-03T02:00:00.000Z",
-        "temp_valor": "354",
-        "bpm_valor": "66",
-        "oxig_valor": "100"
-      },
-      {
-        "use_id": 5,
-        "usu_id": 5,
-        "esp_id": 5,
-        "usu_nome": "Diego Rafael Lima",
-        "usu_nascimento": "1995-09-27T03:00:00.000Z",
-        "temp_valor": "346",
-        "bpm_valor": "71",
-        "oxig_valor": "98"
-      },
-      {
-        "use_id": 6,
-        "usu_id": 6,
-        "esp_id": 6,
-        "usu_nome": "Eduarda Cristina Mendes",
-        "usu_nascimento": "1999-06-10T03:00:00.000Z",
-        "temp_valor": "355",
-        "bpm_valor": "90",
-        "oxig_valor": "97"
-      },
-      {
-        "use_id": 7,
-        "usu_id": 7,
-        "esp_id": 7,
-        "usu_nome": "Fernando Augusto Pereira",
-        "usu_nascimento": "2002-02-18T03:00:00.000Z",
-        "temp_valor": "356",
-        "bpm_valor": "99",
-        "oxig_valor": "97"
-      },
-      {
-        "use_id": 8,
-        "usu_id": 8,
-        "esp_id": 8,
-        "usu_nome": "Gabriela Nunes de Souza",
-        "usu_nascimento": "1997-11-22T02:00:00.000Z",
-        "temp_valor": "343",
-        "bpm_valor": "85",
-        "oxig_valor": "98"
-      },
-      {
-        "use_id": 9,
-        "usu_id": 9,
-        "esp_id": 9,
-        "usu_nome": "Henrique Matheus Rocha",
-        "usu_nascimento": "2000-08-05T03:00:00.000Z",
-        "temp_valor": "343",
-        "bpm_valor": "67",
-        "oxig_valor": "100"
-      },
-      {
-        "use_id": 10,
-        "usu_id": 10,
-        "esp_id": 10,
-        "usu_nome": "Isabela Vitória Cardoso",
-        "usu_nascimento": "1996-05-30T03:00:00.000Z",
-        "temp_valor": "355",
-        "bpm_valor": "97",
-        "oxig_valor": "99"
       }
     ])
+    // REQUEST API
     useEffect( ()=>{
       const fetchData = async () =>{
         try {
@@ -112,6 +33,116 @@ const Card = ({setUserData})=>{
       }
       fetchData();
     },[])
+
+
+    const atualizarValor = (esp_id, chave, novoValor) => {
+        const teste = dados.find((dados) => dados.id === esp_id)
+        console.log(teste);
+        
+        // if(dados.find((elemento) => elemento.id === esp_id)){
+        //   setDados((dadosAnteriores) =>
+        //     dadosAnteriores.map((item) =>
+        //       item.esp_id === esp_id ? { ...item, [chave]: novoValor } : item
+        //     )
+        //   );
+        // }else{
+        //   setDados((prevTermos) => [...prevTermos, {esp_id: esp_id, chave:novoValor}]);
+        // }
+      };
+
+
+    const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
+    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura"]; // Altere para o tópico desejado
+
+
+
+    useEffect(() => {
+      const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
+  
+      client.on('connect', () => {
+        console.log('Conectado ao MQTT via WebSocket');
+        client.subscribe(MQTT_TOPIC, (err) => {
+          if (!err) {
+            console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
+          }
+        });
+      });
+  
+      client.on('message', (topic, message) => {
+        console.log(`Mensagem no tópico ${topic}:`, message.toString());
+        const menssage = JSON.parse(message.toString());
+        const use_id = menssage.use_id;
+        const dados_tipo = menssage.dados_tipo
+        const dados_valor = menssage.dados_valor
+        let chave
+        if (dados_tipo == "temperatura") {
+          chave = "temp_valor"
+        }
+        if (dados_tipo == "bpm") {
+          chave = "bpm_valor"
+        }
+        if (dados_tipo == "oxigenacao") {
+          chave = "oxig_valor"
+        }
+
+        setDados(
+          (prevData)=> 
+            prevData.map(
+              dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+            )
+        )
+      });
+  
+      client.on('error', (error) => {
+        console.error('Erro na conexão MQTT:', error);
+      });
+  
+      return () => {
+        if (client.connected) {
+          client.end();
+        }
+      };
+    }, []);
+
+    // REQUEST 
+    // useEffect(() => {
+    //     const client = mqtt.connect(MQTT_BROKER);
+      
+    //     client.on("connect", () => {
+    //       console.log("Conectado ao broker MQTT");
+    //       client.subscribe(MQTT_TOPIC, (err) => {
+    //         if (err) console.error("Erro ao se inscrever no tópico", err);
+    //       });
+    //     });
+      
+    //     client.on("message", (topic, payload) => {
+    //       console.log(payload.toString())
+    //       const newMessage = JSON.parse(payload.toString());
+    //       //console.log(newMessage);
+      
+    //       // Usando a função de atualização para garantir que pega o estado mais recente
+    //       const id = newMessage.esp_id
+    //       const tipo = newMessage.dados_tipo
+    //       const valor = newMessage.dados_valor
+    //       let chave
+    //       if (tipo == "temperatura") {
+    //         chave = "temp_valor"
+    //       }
+    //       if (tipo == "bpm") {
+    //         chave = "bpm_valor"
+    //       }
+    //       if (tipo == "oxigenacao") {
+    //         chave = "oxig_valor"
+    //       }
+    //       console.log({id: id,tipo: tipo, chave: chave, valor: valor});
+    //       atualizarValor(id , chave, valor)
+    //       setMessage((prevMessages) => [...prevMessages, newMessage]);
+    //     });
+      
+    //     return () => {
+    //       client.end();
+    //     };
+    //   }, [])
       
     return(
         <>
