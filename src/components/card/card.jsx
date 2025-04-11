@@ -52,7 +52,7 @@ const Card = ({setUserData})=>{
 
 
     const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
-    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura"]; // Altere para o tópico desejado
+    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio"]; // Altere para o tópico desejado
 
 
 
