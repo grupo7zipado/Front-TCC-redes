@@ -33,25 +33,31 @@ const Card = ({setUserData})=>{
       }
       fetchData();
     },[])
-    
+
+
+    const atualizarValor = (esp_id, chave, novoValor) => {
+        const teste = dados.find((dados) => dados.id === esp_id)
+        console.log(teste);
+        
+        // if(dados.find((elemento) => elemento.id === esp_id)){
+        //   setDados((dadosAnteriores) =>
+        //     dadosAnteriores.map((item) =>
+        //       item.esp_id === esp_id ? { ...item, [chave]: novoValor } : item
+        //     )
+        //   );
+        // }else{
+        //   setDados((prevTermos) => [...prevTermos, {esp_id: esp_id, chave:novoValor}]);
+        // }
+      };
+
+
     const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
-    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio " , "esp32/teste"]; // Altere para o tópico desejado
+    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio"]; // Altere para o tópico desejado
 
-
-    const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
-
-    let valor = "0"
-    function enviarMensagem() {
-      // client.publish('esp32/teste', valor);
-
-      valor == "0" ? "1" : "0"  
-      client.publish('esp/teste', valor);
-      console.log('Mensagem enviada!');
-    }
 
 
     useEffect(() => {
-     
+      const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
   
       client.on('connect', () => {
         console.log('Conectado ao MQTT via WebSocket');
@@ -61,7 +67,7 @@ const Card = ({setUserData})=>{
           }
         });
       });
-      
+  
       client.on('message', (topic, message) => {
         console.log(`Mensagem no tópico ${topic}:`, message.toString());
         const menssage = JSON.parse(message.toString());
@@ -90,10 +96,7 @@ const Card = ({setUserData})=>{
       client.on('error', (error) => {
         console.error('Erro na conexão MQTT:', error);
       });
-
-
-
-
+  
       return () => {
         if (client.connected) {
           client.end();
@@ -140,17 +143,13 @@ const Card = ({setUserData})=>{
     //       client.end();
     //     };
     //   }, [])
-    
+      
     return(
         <>
-      
           {
             dados?
             dados.map(dado=>(
               <>
-                {
-         <button onclick={()=>enviarMensagem()}>Enviar Dados</button>
-        }
                 <div className="container wmin250 m001 " 
                   onClick={
                     () => {
