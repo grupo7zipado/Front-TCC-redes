@@ -9,32 +9,51 @@ import Modal from "../modal/modal"
 import { useEffect } from "react"
 import UsuarioEsp from "../usuarioesp/usuariosEsp"
 import RegisterUser from "../register/registerUser"
+import Grafico from "../grafico/grafico"
 
-const Middle = () =>{
+const Middle = ({tela, setTela}) =>{
 
 
+    const [ user, setUser] = useState("")
 
     const [ userData, setUserData] = useState();
 
+    // useEffect(()=>{
+    //     console.log(user);
+        
+    // },[user])
+
+
+    useEffect(()=>{
+        console.log(tela);
+        
+    },[tela])
     
-
-
     return(
         /* Função apenas para facilitar a organização da pagina*/
         <div class="meio-pagina">
             {
                 <>
-                    <Card setUserData = {setUserData} />
-                    {/* <Title/>
-                    <GraficoLog/>
-                    <Logs/> 
-                    <Logs/> 
-                    <Logs/> 
-                    <Logs/> 
-                    <Logs/> 
-                    <Logs/>   */}
-                    {/* <UsuarioEsp/> */}
-                    {/* <RegisterUser/> */}
+                    {
+                        tela === "card"
+                        ?
+                        <Card setUser = {setUser} setTela = {setTela} />
+                        :
+                        tela === "espUser"
+                        ?
+                        <UsuarioEsp/> 
+                        :
+                        tela === "cadUser"
+                        ?
+                        <RegisterUser/>
+                        :
+                        tela === "grafico"
+                        ?
+                        <Grafico user={user}/>
+                        :
+                        ""
+                    }
+                    {/*  */}
                 </>
             } 
 

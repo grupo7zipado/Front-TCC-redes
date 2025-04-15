@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./chart.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import ConnApi from "../conn";
 
 
 
@@ -23,7 +23,31 @@ const data = [
 ];
 
 
-const GraficoLog = () => {
+const GraficoLog = ({user}) => {
+
+
+  const [values, setValues] = useState();
+  // REQUEST API
+  useEffect( ()=>{
+    const usuario = {
+      usu_id:user
+    }
+    const fetchData = async () =>{
+      try {
+        const resposta = await ConnApi.get(`/allDataUser/${user}`)
+        console.log(resposta);
+        setValues(resposta.data.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  },[])
+
+  useEffect(()=>{
+    console.log(user);
+  },[user])
+
   const [mudarGrafico, setMudarGrafico] = useState('temp');
   return (
     <section className="grafico-area df ac jcc ">

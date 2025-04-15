@@ -7,7 +7,7 @@ import Modal from "../modal/modal"
 import Title from "../title"
 import GraficoLog from "../chart"
 import Logs from "../logs"
-const Card = ({setUserData})=>{
+const Card = ({setUser, setTela})=>{
     const [dados, setDados] = useState([
       {
         "use_id": 2,
@@ -56,93 +56,53 @@ const Card = ({setUserData})=>{
 
 
 
-    useEffect(() => {
-      const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
-  
-      client.on('connect', () => {
-        console.log('Conectado ao MQTT via WebSocket');
-        client.subscribe(MQTT_TOPIC, (err) => {
-          if (!err) {
-            console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
-          }
-        });
-      });
-  
-      client.on('message', (topic, message) => {
-        console.log(`Mensagem no tópico ${topic}:`, message.toString());
-        const menssage = JSON.parse(message.toString());
-        const use_id = menssage.use_id;
-        const dados_tipo = menssage.dados_tipo
-        const dados_valor = menssage.dados_valor
-        let chave
-        if (dados_tipo == "temperatura") {
-          chave = "temp_valor"
-        }
-        if (dados_tipo == "bpm") {
-          chave = "bpm_valor"
-        }
-        if (dados_tipo == "oxigenacao") {
-          chave = "oxig_valor"
-        }
-
-        setDados(
-          (prevData)=> 
-            prevData.map(
-              dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
-            )
-        )
-      });
-  
-      client.on('error', (error) => {
-        console.error('Erro na conexão MQTT:', error);
-      });
-  
-      return () => {
-        if (client.connected) {
-          client.end();
-        }
-      };
-    }, []);
-
-    // REQUEST 
     // useEffect(() => {
-    //     const client = mqtt.connect(MQTT_BROKER);
-      
-    //     client.on("connect", () => {
-    //       console.log("Conectado ao broker MQTT");
-    //       client.subscribe(MQTT_TOPIC, (err) => {
-    //         if (err) console.error("Erro ao se inscrever no tópico", err);
-    //       });
+    //   const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
+  
+    //   client.on('connect', () => {
+    //     console.log('Conectado ao MQTT via WebSocket');
+    //     client.subscribe(MQTT_TOPIC, (err) => {
+    //       if (!err) {
+    //         console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
+    //       }
     //     });
-      
-    //     client.on("message", (topic, payload) => {
-    //       console.log(payload.toString())
-    //       const newMessage = JSON.parse(payload.toString());
-    //       //console.log(newMessage);
-      
-    //       // Usando a função de atualização para garantir que pega o estado mais recente
-    //       const id = newMessage.esp_id
-    //       const tipo = newMessage.dados_tipo
-    //       const valor = newMessage.dados_valor
-    //       let chave
-    //       if (tipo == "temperatura") {
-    //         chave = "temp_valor"
-    //       }
-    //       if (tipo == "bpm") {
-    //         chave = "bpm_valor"
-    //       }
-    //       if (tipo == "oxigenacao") {
-    //         chave = "oxig_valor"
-    //       }
-    //       console.log({id: id,tipo: tipo, chave: chave, valor: valor});
-    //       atualizarValor(id , chave, valor)
-    //       setMessage((prevMessages) => [...prevMessages, newMessage]);
-    //     });
-      
-    //     return () => {
+    //   });
+  
+    //   client.on('message', (topic, message) => {
+    //     console.log(`Mensagem no tópico ${topic}:`, message.toString());
+    //     const menssage = JSON.parse(message.toString());
+    //     const use_id = menssage.use_id;
+    //     const dados_tipo = menssage.dados_tipo
+    //     const dados_valor = menssage.dados_valor
+    //     let chave
+    //     if (dados_tipo == "temperatura") {
+    //       chave = "temp_valor"
+    //     }
+    //     if (dados_tipo == "bpm") {
+    //       chave = "bpm_valor"
+    //     }
+    //     if (dados_tipo == "oxigenacao") {
+    //       chave = "oxig_valor"
+    //     }
+
+    //     setDados(
+    //       (prevData)=> 
+    //         prevData.map(
+    //           dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+    //         )
+    //     )
+    //   });
+  
+    //   client.on('error', (error) => {
+    //     console.error('Erro na conexão MQTT:', error);
+    //   });
+  
+    //   return () => {
+    //     if (client.connected) {
     //       client.end();
-    //     };
-    //   }, [])
+    //     }
+    //   };
+    // }, []);
       
     return(
         <>
@@ -153,7 +113,9 @@ const Card = ({setUserData})=>{
                 <div className="container wmin250 m001 " 
                   onClick={
                     () => {
-                      setUserData(dado.usu_id);
+                      setUser(dado.usu_id);
+                      setTela("grafico");
+
                     }
                   }
                 >
