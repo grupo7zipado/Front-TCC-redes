@@ -5,7 +5,7 @@ import ConnApi from "../conn";
 
 
 
-const data = [
+let data = [
   { time: '14:00' , temp: 36.4, bpm: 95, ox: 98 },
   { time: '14:05' , temp: 36.8, bpm: 99, ox: 97 },
   { time: '14:10' , temp: 36.4, bpm: 95, ox: 98 },
@@ -26,17 +26,23 @@ const data = [
 const GraficoLog = ({user}) => {
 
 
+
+  const [mudarGrafico, setMudarGrafico] = useState('temperatura');
+
+
   const [values, setValues] = useState();
   // REQUEST API
   useEffect( ()=>{
-    const usuario = {
-      usu_id:user
-    }
     const fetchData = async () =>{
       try {
         const resposta = await ConnApi.get(`/allDataUser/${user}`)
         console.log(resposta);
-        setValues(resposta.data.data)
+        const dadosConvertidos = resposta.data.data.map(item => ({
+          ...item,
+          dados_valor: Number(item.dados_valor),
+        }));
+        setValues(dadosConvertidos)
+
       } catch (error) {
         console.log(error);
       }
@@ -44,26 +50,44 @@ const GraficoLog = ({user}) => {
     fetchData();
   },[])
 
+  const [oi , setOi] = useState("")
   useEffect(()=>{
-    console.log(user);
-  },[user])
+    setOi(values? values.filter((item)=>item.dados_tipo == mudarGrafico):"")
+    
+  },[mudarGrafico])
 
-  const [mudarGrafico, setMudarGrafico] = useState('temp');
+
+
+  useEffect(()=>{
+  //   console.log(values);
+  console.log(oi);
+
+  },[oi])
+
+
   return (
     <section className="grafico-area df ac jcc ">
 
         <ul class="filtro-graphics">
-            <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
+            <li onClick={() => setMudarGrafico("temperatura")} className=" style-button"> Temperatura</li>
             <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
-            <li onClick={() => setMudarGrafico("ox")} className=" style-button"> oxidação</li>
+            <li onClick={() => setMudarGrafico("oxigenacao")} className=" style-button"> oxidação</li>
+            {/* <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
+            <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
+            <li onClick={() => setMudarGrafico("ox")} className=" style-button"> oxidação</li> */}
         </ul>
         
           <div className="graficoEstilo">
             <ResponsiveContainer  width="100%" height={400}>
-            <LineChart data={data}>
+
+            {/* <LineChart data={data}> */}
+            <LineChart data={oi}>
+
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" />
-                <YAxis domain={'auto'} />
+                <XAxis dataKey="dados_generate" />
+                <YAxis 
+                  domain={["auto"]} 
+                />
                 <Tooltip />
                 <Legend   />
           
@@ -71,8 +95,11 @@ const GraficoLog = ({user}) => {
                 <Line 
                   key={mudarGrafico} 
                   type="monotone" 
-                  dataKey={mudarGrafico} 
-                  stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
+                  dataKey={"dados_valor"} 
+                  stroke={mudarGrafico === "temperatura" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
+                  // dataKey={mudarGrafico} 
+                  // stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
+                  
                   isAnimationActive={true} 
                   animationDuration={800} 
                 />
