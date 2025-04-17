@@ -56,53 +56,53 @@ const Card = ({setUser, setTela})=>{
 
 
 
-    // useEffect(() => {
-    //   const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
+    useEffect(() => {
+      const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
   
-    //   client.on('connect', () => {
-    //     console.log('Conectado ao MQTT via WebSocket');
-    //     client.subscribe(MQTT_TOPIC, (err) => {
-    //       if (!err) {
-    //         console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
-    //       }
-    //     });
-    //   });
+      client.on('connect', () => {
+        console.log('Conectado ao MQTT via WebSocket');
+        client.subscribe(MQTT_TOPIC, (err) => {
+          if (!err) {
+            console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
+          }
+        });
+      });
   
-    //   client.on('message', (topic, message) => {
-    //     console.log(`Mensagem no tópico ${topic}:`, message.toString());
-    //     const menssage = JSON.parse(message.toString());
-    //     const use_id = menssage.use_id;
-    //     const dados_tipo = menssage.dados_tipo
-    //     const dados_valor = menssage.dados_valor
-    //     let chave
-    //     if (dados_tipo == "temperatura") {
-    //       chave = "temp_valor"
-    //     }
-    //     if (dados_tipo == "bpm") {
-    //       chave = "bpm_valor"
-    //     }
-    //     if (dados_tipo == "oxigenacao") {
-    //       chave = "oxig_valor"
-    //     }
+      client.on('message', (topic, message) => {
+        console.log(`Mensagem no tópico ${topic}:`, message.toString());
+        const menssage = JSON.parse(message.toString());
+        const use_id = menssage.use_id;
+        const dados_tipo = menssage.dados_tipo
+        const dados_valor = menssage.dados_valor
+        let chave
+        if (dados_tipo == "temperatura") {
+          chave = "temp_valor"
+        }
+        if (dados_tipo == "bpm") {
+          chave = "bpm_valor"
+        }
+        if (dados_tipo == "oxigenacao") {
+          chave = "oxig_valor"
+        }
 
-    //     setDados(
-    //       (prevData)=> 
-    //         prevData.map(
-    //           dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
-    //         )
-    //     )
-    //   });
+        setDados(
+          (prevData)=> 
+            prevData.map(
+              dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+            )
+        )
+      });
   
-    //   client.on('error', (error) => {
-    //     console.error('Erro na conexão MQTT:', error);
-    //   });
+      client.on('error', (error) => {
+        console.error('Erro na conexão MQTT:', error);
+      });
   
-    //   return () => {
-    //     if (client.connected) {
-    //       client.end();
-    //     }
-    //   };
-    // }, []);
+      return () => {
+        if (client.connected) {
+          client.end();
+        }
+      };
+    }, []);
       
     return(
         <>

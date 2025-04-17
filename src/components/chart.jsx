@@ -27,7 +27,7 @@ const GraficoLog = ({user}) => {
 
 
 
-  const [mudarGrafico, setMudarGrafico] = useState('temperatura');
+  const [mudarGrafico, setMudarGrafico] = useState('');
 
 
   const [values, setValues] = useState();
@@ -56,8 +56,9 @@ const GraficoLog = ({user}) => {
     
   },[mudarGrafico])
 
-
-
+  useEffect(()=>{
+    setMudarGrafico("temperatura")
+  },[])
   useEffect(()=>{
   //   console.log(values);
   console.log(oi);
