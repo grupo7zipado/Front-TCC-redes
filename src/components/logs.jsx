@@ -3,7 +3,7 @@ import "./logs.css"
 const Logs = () =>{
 
     return(
-        /* define os logs*/
+        /* define os logs do usuario de sinais vitais como temperatura, oxigenação, bpm e hora em que os dados foram gerados*/
 <ul class="logset">
   
     <li class="com-log w025">
