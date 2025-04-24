@@ -7,7 +7,7 @@ import Modal from "../modal/modal"
 import Title from "../title"
 import GraficoLog from "../chart"
 import Logs from "../logs"
-const Card = ({setUserData})=>{
+const Card = ({setUser, setTela})=>{
     const [dados, setDados] = useState([
       {
         "use_id": 2,
@@ -154,7 +154,9 @@ const Card = ({setUserData})=>{
                 <div className="container wmin250 m001 " 
                   onClick={
                     () => {
-                      setUserData(dado.usu_id);
+                      setUser(dado.usu_id);
+                      setTela("grafico");
+
                     }
                   }
                 >

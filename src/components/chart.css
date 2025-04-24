@@ -21,7 +21,8 @@
   background-color: rgba(250,250,250,0.1);
   border-radius: 0.6vw ;
   transition: all 0.3s;
-  width: 100px;
+  min-width: 100px;
+  max-width: 120px;
   height: 30px;
   display: flex;
   align-items: center;
