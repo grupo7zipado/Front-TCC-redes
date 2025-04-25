@@ -1,4 +1,6 @@
 /* Delimitação da área e estilização do gráfico */ 
+/* Estilização e delimitação de espaço do gráfico*/
+
 .grafico-area{
     display: flex;
     width: 80%;
@@ -7,6 +9,9 @@
 .graficoEstilo{
     width: 70%;
 }
+
+
+/* Estilização dos boõtes de filtro do gráfico*/
 .filtro-graphics{
     display: flex;
     flex-direction: column;
@@ -35,6 +40,9 @@
     background-color: cadetblue;
 }
  /* Responsividade do gráfico para diferentes dispositivos */
+
+/*Responsividade do gráfico para diversos tipos de telas*/
+
 @media (max-width: 768px) {
     .graficoEstilo{
         width: 100%;
