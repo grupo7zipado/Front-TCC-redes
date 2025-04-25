@@ -149,8 +149,7 @@ const Card = ({setUser, setTela})=>{
             dados.map(dado=>(
               <>
                 {
-         <button onclick={()=>enviarMensagem()}>Enviar Dados</button>
-        }
+          }
                 <div className="container wmin250 m001 " 
                   onClick={
                     () => {
