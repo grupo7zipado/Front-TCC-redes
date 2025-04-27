@@ -8,7 +8,7 @@ const Grafico = ({user})=>{
     
     return(
         <>
-            <Title/>
+            <Title user={user}/>
             <GraficoLog user={user}/>
             <Logs/> 
             <Logs/> 

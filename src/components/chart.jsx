@@ -35,13 +35,14 @@ const GraficoLog = ({user}) => {
   useEffect( ()=>{
     const fetchData = async () =>{
       try {
-        const resposta = await ConnApi.get(`/allDataUser/${user}`)
+        const resposta = await ConnApi.get(`/allDataUser/${user.usu_id}`)
         console.log(resposta);
         const dadosConvertidos = resposta.data.data.map(item => ({
           ...item,
           dados_valor: Number(item.dados_valor),
         }));
         setValues(dadosConvertidos)
+        setMudarGrafico("temperatura")
 
       } catch (error) {
         console.log(error);
@@ -50,21 +51,12 @@ const GraficoLog = ({user}) => {
     fetchData();
   },[])
 
-  const [oi , setOi] = useState("")
+  const [dadosExibidos , setDadosExibidos] = useState("");
+
+
   useEffect(()=>{
-    setOi(values? values.filter((item)=>item.dados_tipo == mudarGrafico):"")
-    
+    setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico):"")
   },[mudarGrafico])
-
-  useEffect(()=>{
-    setMudarGrafico("temperatura")
-  },[])
-  useEffect(()=>{
-  //   console.log(values);
-  console.log(oi);
-
-  },[oi])
-
 
   return (
     <section className="grafico-area df ac jcc ">
@@ -72,7 +64,7 @@ const GraficoLog = ({user}) => {
         <ul class="filtro-graphics">
             <li onClick={() => setMudarGrafico("temperatura")} className=" style-button"> Temperatura</li>
             <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
-            <li onClick={() => setMudarGrafico("oxigenacao")} className=" style-button"> oxidação</li>
+            <li onClick={() => setMudarGrafico("oxigenacao")} className=" style-button"> Oxigenação</li>
             {/* <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
             <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
             <li onClick={() => setMudarGrafico("ox")} className=" style-button"> oxidação</li> */}
@@ -82,7 +74,7 @@ const GraficoLog = ({user}) => {
             <ResponsiveContainer  width="100%" height={400}>
 
             {/* <LineChart data={data}> */}
-            <LineChart data={oi}>
+            <LineChart data={dadosExibidos}>
 
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="dados_generate" />
@@ -100,7 +92,8 @@ const GraficoLog = ({user}) => {
                   stroke={mudarGrafico === "temperatura" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
                   // dataKey={mudarGrafico} 
                   // stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
-                  
+                  // rever
+                  name={mudarGrafico == "oxigenacao"? "OXIGENAÇÃO": mudarGrafico.toUpperCase() }
                   isAnimationActive={true} 
                   animationDuration={800} 
                 />

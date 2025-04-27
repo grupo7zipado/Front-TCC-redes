@@ -1,11 +1,11 @@
 import "./title.css"
 
 
-const Title = () =>{
+const Title = ({user}) =>{
 return(
     <section class="titular-title">
-        <h1 class="nome-title">     Serumaninho    </h1>
-        <h2 class="idad-title"> 18/04/2000</h2>
+        <h1 class="nome-title">     {user.usu_nome}    </h1>
+        <h2 class="idad-title"> {user.usu_nascimento}</h2>
     </section>
 
 )

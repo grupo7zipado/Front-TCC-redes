@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react"
-import Footer from "../footer"
+import { useState } from "react"
 import Header from "../header"
 import Middle from "../middle/middle"
-import RegisterUser  from "../register/registerUser"
 const Main = ()=>{
     const [tela, setTela] = useState("card");
 
@@ -11,9 +9,7 @@ const Main = ()=>{
     return(
         <>  
             <Header setTela = {setTela}/>
-            {/* <RegisterUser /> */}
             <Middle tela = {tela} setTela = {setTela}/>
-            {/* <Footer/> */}
         </>
     )
 }

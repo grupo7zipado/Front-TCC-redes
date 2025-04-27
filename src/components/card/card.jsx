@@ -27,6 +27,8 @@ const Card = ({setUser, setTela})=>{
           const resposta = await ConnApi.get("/lastDataUsers")
           console.log(resposta);
           setDados(resposta.data.data)
+          console.log(resposta);
+          
         } catch (error) {
           console.log(error);
         }
@@ -34,72 +36,72 @@ const Card = ({setUser, setTela})=>{
       fetchData();
     },[])
     
-    const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
-    const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio " , "esp32/teste"]; // Altere para o tópico desejado
+    // const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
+    // const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio " , "esp32/teste"]; // Altere para o tópico desejado
 
 
-    const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
+    // const client = mqtt.connect(MQTT_BROKER); // ou o IP do seu servidor
 
-    let valor = "0"
-    function enviarMensagem() {
-      // client.publish('esp32/teste', valor);
+    // let valor = "0"
+    // function enviarMensagem() {
+    //   // client.publish('esp32/teste', valor);
 
-      valor == "0" ? "1" : "0"  
-      client.publish('esp/teste', valor);
-      console.log('Mensagem enviada!');
-    }
+    //   valor == "0" ? "1" : "0"  
+    //   client.publish('esp/teste', valor);
+    //   console.log('Mensagem enviada!');
+    // }
 
 
-    useEffect(() => {
+    // useEffect(() => {
      
   
-      client.on('connect', () => {
-        console.log('Conectado ao MQTT via WebSocket');
-        client.subscribe(MQTT_TOPIC, (err) => {
-          if (!err) {
-            console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
-          }
-        });
-      });
+    //   client.on('connect', () => {
+    //     console.log('Conectado ao MQTT via WebSocket');
+    //     client.subscribe(MQTT_TOPIC, (err) => {
+    //       if (!err) {
+    //         console.log(`Inscrito no tópico ${MQTT_TOPIC}`);
+    //       }
+    //     });
+    //   });
       
-      client.on('message', (topic, message) => {
-        console.log(`Mensagem no tópico ${topic}:`, message.toString());
-        const menssage = JSON.parse(message.toString());
-        const use_id = menssage.use_id;
-        const dados_tipo = menssage.dados_tipo
-        const dados_valor = menssage.dados_valor
-        let chave
-        if (dados_tipo == "temperatura") {
-          chave = "temp_valor"
-        }
-        if (dados_tipo == "bpm") {
-          chave = "bpm_valor"
-        }
-        if (dados_tipo == "oxigenacao") {
-          chave = "oxig_valor"
-        }
+    //   client.on('message', (topic, message) => {
+    //     console.log(`Mensagem no tópico ${topic}:`, message.toString());
+    //     const menssage = JSON.parse(message.toString());
+    //     const use_id = menssage.use_id;
+    //     const dados_tipo = menssage.dados_tipo
+    //     const dados_valor = menssage.dados_valor
+    //     let chave
+    //     if (dados_tipo == "temperatura") {
+    //       chave = "temp_valor"
+    //     }
+    //     if (dados_tipo == "bpm") {
+    //       chave = "bpm_valor"
+    //     }
+    //     if (dados_tipo == "oxigenacao") {
+    //       chave = "oxig_valor"
+    //     }
 
-        setDados(
-          (prevData)=> 
-            prevData.map(
-              dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
-            )
-        )
-      });
+    //     setDados(
+    //       (prevData)=> 
+    //         prevData.map(
+    //           dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+    //         )
+    //     )
+    //   });
   
-      client.on('error', (error) => {
-        console.error('Erro na conexão MQTT:', error);
-      });
+    //   client.on('error', (error) => {
+    //     console.error('Erro na conexão MQTT:', error);
+    //   });
 
 
 
 
-      return () => {
-        if (client.connected) {
-          client.end();
-        }
-      };
-    }, []);
+    //   return () => {
+    //     if (client.connected) {
+    //       client.end();
+    //     }
+    //   };
+    // }, []);
 
     // REQUEST 
     // useEffect(() => {
@@ -153,7 +155,7 @@ const Card = ({setUser, setTela})=>{
                 <div className="container wmin250 m001 " 
                   onClick={
                     () => {
-                      setUser(dado.usu_id);
+                      setUser(dado);
                       setTela("grafico");
 
                     }
