@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./chart.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import ConnApi from "../conn";
+import ConnApi from "../service/conn";
 
 
 
@@ -55,7 +55,10 @@ const GraficoLog = ({user}) => {
 
 
   useEffect(()=>{
-    setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico):"")
+    // filtra o itens de acordo com o dados_tipo e seleciona os 10 ultimos 
+    setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico).slice(-10):"")
+    console.log(dadosExibidos);
+    
   },[mudarGrafico])
 
   return (

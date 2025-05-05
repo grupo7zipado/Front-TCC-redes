@@ -173,6 +173,9 @@
 .hmin100{
     min-height: 100px;
 }
+.hmin200{
+    min-height: 200px;
+}
 .hmin300{
     min-height: 300px;
 }

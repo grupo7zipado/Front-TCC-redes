@@ -1,12 +1,8 @@
 import "./card.css"
-import ConnApi from "../../conn"
+import ConnApi from "../../service/conn"
 import { useState } from "react"
 import { useEffect } from "react"
 import mqtt from "mqtt"
-import Modal from "../modal/modal"
-import Title from "../title"
-import GraficoLog from "../chart"
-import Logs from "../logs"
 const Card = ({setUser, setTela})=>{
     const [dados, setDados] = useState([
       {
@@ -22,6 +18,7 @@ const Card = ({setUser, setTela})=>{
     ])
     // REQUEST API
     useEffect( ()=>{
+      
       const fetchData = async () =>{
         try {
           const resposta = await ConnApi.get("/lastDataUsers")
