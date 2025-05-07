@@ -36,6 +36,7 @@
 }
 
 .style-button:hover{
+    cursor: pointer;
     scale: calc(1.12);
     background-color: cadetblue;
 }

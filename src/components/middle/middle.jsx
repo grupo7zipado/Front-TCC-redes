@@ -30,8 +30,8 @@ const Middle = ({tela, setTela}) =>{
         <div class="meio-pagina">
             {
                 <>
-                    <Teste/>
-                    {/* {
+                    {/* <Teste/> */}
+                    {
                         tela === "card"
                         ?
                         <Card setUser = {setUser} setTela = {setTela} />
@@ -49,7 +49,7 @@ const Middle = ({tela, setTela}) =>{
                         <Grafico user={user}/>
                         :
                         ""
-                    } */}
+                    }
                     {/*  */}
                 </>
             } 
