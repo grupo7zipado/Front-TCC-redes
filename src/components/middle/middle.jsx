@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import UsuarioEsp from "../usuarioesp/usuariosEsp"
 import RegisterUser from "../register/registerUser"
 import Grafico from "../grafico/grafico"
+import Teste from "../teste"
 
 const Middle = ({tela, setTela}) =>{
 
@@ -29,7 +30,8 @@ const Middle = ({tela, setTela}) =>{
         <div class="meio-pagina">
             {
                 <>
-                    {
+                    <Teste/>
+                    {/* {
                         tela === "card"
                         ?
                         <Card setUser = {setUser} setTela = {setTela} />
@@ -47,7 +49,7 @@ const Middle = ({tela, setTela}) =>{
                         <Grafico user={user}/>
                         :
                         ""
-                    }
+                    } */}
                     {/*  */}
                 </>
             } 
