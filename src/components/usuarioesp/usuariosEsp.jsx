@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./styles.css"
+import ConnApi from "../../service/conn"
 const UsuarioEsp= ({esp})=>{
     const [usuarios, setUsuarios] = useState([
         {
@@ -45,6 +46,36 @@ const UsuarioEsp= ({esp})=>{
             esp_mac: "aaaaaa"
         },
     ])
+    const [esp, setEsp] = useState();
+    const [usuario, setUsuario] = useState()
+    const [values, setValues] = useState();
+    // REQUEST API
+    useEffect( ()=>{
+        const fetchData = async () =>{
+        try {
+            const resposta = await ConnApi.get(`/usuariosEsp`)
+            setUsuarios(resposta.data.data.usuarios);
+            setEsps(resposta.data.data.esps)
+        } catch (error) {
+            console.log(error);
+        }
+        }
+        fetchData();
+    },[])
+
+    const CadastroUsuariosEsp = async ()=>{
+        const fetchData = async () =>{
+            try {
+
+                const resposta = await ConnApi.get(`/usuariosEsp`, dados)
+                setUsuarios(resposta.data.data.usuarios);
+                setEsps(resposta.data.data.esps)
+            } catch (error) {
+                console.log(error);
+            }
+            }
+            fetchData();
+    }
 
     
     return(
@@ -58,7 +89,7 @@ const UsuarioEsp= ({esp})=>{
                         <div  className=" w045_80 w045 tal">
                             USUARIO SELECIONADO
                         </div>
-                        <select name="usuario" className="selectue w045_80 w045 h30 br5" id="usuario">
+                        <select name="usuario" className="selectue w045_80 w045 h30 br5" id="usuario" onChange={(e)=>{setUsuario(e.target.value)}}>
                             <option value="" selected hidden></option>
                             {
                                 usuarios
@@ -76,7 +107,7 @@ const UsuarioEsp= ({esp})=>{
                         <div className="w045_80 w045 tal">
                             ESP SELECIONADO
                         </div>
-                        <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp">
+                        <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp" onChange={(e)=>{setEsp(e.target.value)}}>
                             <option value="" selected hidden></option>
                             {
                                 esp
