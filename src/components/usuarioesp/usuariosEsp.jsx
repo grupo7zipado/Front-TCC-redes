@@ -1,6 +1,7 @@
+import { useState } from "react"
 import "./styles.css"
-const UsuarioEsp= ()=>{
-    const usuarios = [
+const UsuarioEsp= ({esp})=>{
+    const [usuarios, setUsuarios] = useState([
         {
             usu_id:1,
             usu_nome: "ze",
@@ -21,8 +22,8 @@ const UsuarioEsp= ()=>{
             usu_nome: "abc",
             usu_nascimento: "2000-10-10"
         }
-    ]
-    const esps = [
+    ])
+    const [esps, setEsps] =useState([
         {
             esp_id:1,
             esp_mac: "aa"
@@ -43,7 +44,9 @@ const UsuarioEsp= ()=>{
             esp_id:5,
             esp_mac: "aaaaaa"
         },
-    ]
+    ])
+
+    
     return(
         <div className="usuariosesp df jcsa ac fdc w600 h400 wmax090 br20">
             <div className="fs1_5 p002">
@@ -76,6 +79,10 @@ const UsuarioEsp= ()=>{
                         <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp">
                             <option value="" selected hidden></option>
                             {
+                                esp
+                                ?
+                                <option value='' selected>{esp.Mensagem}</option>
+                                :
                                 esps
                                 ?
                                 esps.map(
