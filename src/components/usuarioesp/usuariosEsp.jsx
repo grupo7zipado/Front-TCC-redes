@@ -24,7 +24,7 @@ const UsuarioEsp= ({esp})=>{
             usu_nascimento: "2000-10-10"
         }
     ])
-    const [esps, setEsps] =useState([
+    const [esps, setEsps] = useState([
         {
             esp_id:1,
             esp_mac: "aa"
@@ -46,38 +46,45 @@ const UsuarioEsp= ({esp})=>{
             esp_mac: "aaaaaa"
         },
     ])
-    const [esp, setEsp] = useState();
-    const [usuario, setUsuario] = useState()
+
+    const [espSelecionado, setEspSelecionado] = useState();
+    const [usuarioSelecionado, setUsuarioSelecionado] = useState()
     const [values, setValues] = useState();
     // REQUEST API
     useEffect( ()=>{
-        const fetchData = async () =>{
-        try {
-            const resposta = await ConnApi.get(`/usuariosEsp`)
-            setUsuarios(resposta.data.data.usuarios);
-            setEsps(resposta.data.data.esps)
-        } catch (error) {
-            console.log(error);
-        }
-        }
-        fetchData();
-    },[])
-
-    const CadastroUsuariosEsp = async ()=>{
+        
         const fetchData = async () =>{
             try {
-
-                const resposta = await ConnApi.get(`/usuariosEsp`, dados)
+                const resposta = await ConnApi.get(`/usuariosEsp`)
+                console.log(resposta);
                 setUsuarios(resposta.data.data.usuarios);
                 setEsps(resposta.data.data.esps)
             } catch (error) {
                 console.log(error);
             }
+        }
+        fetchData();
+    },[])
+
+
+    const CadastroUsuariosEsp = async ()=>{
+        const fetchData = async () =>{
+                try {
+                    const dados = {
+                        esp_id: espSelecionado,
+                        usu_id: usuarioSelecionado
+                    }
+                    const resposta = await ConnApi.post(`/usuariosEsp`, dados)
+                    console.log(resposta);
+                    
+                } catch (error) {
+                    console.log(error);
+                }
             }
             fetchData();
     }
 
-    
+    useEffect(()=>{ console.log(espSelecionado) },[espSelecionado])
     return(
         <div className="usuariosesp df jcsa ac fdc w600 h400 wmax090 br20">
             <div className="fs1_5 p002">
@@ -89,7 +96,9 @@ const UsuarioEsp= ({esp})=>{
                         <div  className=" w045_80 w045 tal">
                             USUARIO SELECIONADO
                         </div>
-                        <select name="usuario" className="selectue w045_80 w045 h30 br5" id="usuario" onChange={(e)=>{setUsuario(e.target.value)}}>
+                        <select name="usuario" className="selectue w045_80 w045 h30 br5" id="usuario" 
+                            onChange={(e)=>{setUsuarioSelecionado(e.target.value)}}
+                        >
                             <option value="" selected hidden></option>
                             {
                                 usuarios
@@ -107,12 +116,18 @@ const UsuarioEsp= ({esp})=>{
                         <div className="w045_80 w045 tal">
                             ESP SELECIONADO
                         </div>
-                        <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp" onChange={(e)=>{setEsp(e.target.value)}}>
+                        <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp" 
+                            onChange={
+                                (e)=>{
+                                    setEspSelecionado(e.target.value)
+                                }
+                            }
+                        >
                             <option value="" selected hidden></option>
                             {
                                 esp
                                 ?
-                                <option value='' selected>{esp.Mensagem}</option>
+                                <option value={esp.esp_id} selected>{esp.Mensagem}</option>
                                 :
                                 esps
                                 ?
@@ -127,7 +142,16 @@ const UsuarioEsp= ({esp})=>{
                     </div>
                 </div>
             </div>
-            <input type="button" value="ANEXAR ESP" className="cadastrar-button h50"/>
+            <input 
+                type="button" 
+                value="ANEXAR ESP" 
+                onClick={
+                    ()=>{
+                        CadastroUsuariosEsp()
+                    }
+                } 
+                className="cadastrar-button h50"
+            />
         </div>
     )
 }
