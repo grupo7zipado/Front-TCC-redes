@@ -36,7 +36,7 @@ const Middle = ({tela, setTela}) =>{
         });
 
         client.on('message', (topic, message) => {
-            setEspMac((prev) => [...prev, {Topico: topic, Mensagem: message?.toString() || ''}]);
+            setEspMac((prev) => [...prev, {Topico: topic, esp_mac: message?.toString() || ''}]);
         });
 
         return () => {
@@ -47,7 +47,6 @@ const Middle = ({tela, setTela}) =>{
     }, []);
 
     const newEsp = (esp)=>{
-        console.log(esp);
         setEsp(esp);
         setTela("espUser")
     }
@@ -65,7 +64,7 @@ const Middle = ({tela, setTela}) =>{
                         :
                         tela === "espUser"
                         ?
-                        <UsuarioEsp esp={esp}/> 
+                        <UsuarioEsp esp={esp} setEsp={setEsp} setEspMac={setEspMac}/> 
                         :
                         tela === "cadUser"
                         ?
@@ -87,8 +86,8 @@ const Middle = ({tela, setTela}) =>{
                                     (esp)=>{
                                         return(
                                             <div className="RequestCard" onClick={()=>{newEsp(esp)}}>
-                                                <strong>Novo ESP conectado:</strong>
-                                                <div>MAC: {esp.Mensagem}</div>
+                                                <strong>Novo ESP conectado</strong>
+                                                <div>MAC: {esp.esp_mac}</div>
                                             </div>
                                         )
                                     }

@@ -1,56 +1,14 @@
 import { useEffect, useState } from "react"
 import "./styles.css"
 import ConnApi from "../../service/conn"
-const UsuarioEsp= ({esp})=>{
-    const [usuarios, setUsuarios] = useState([
-        {
-            usu_id:1,
-            usu_nome: "ze",
-            usu_nascimento: "2000-10-10"
-        },
-        {
-            usu_id:2,
-            usu_nome: "ola",
-            usu_nascimento: "2000-10-10"
-        },
-        {
-            usu_id:3,
-            usu_nome: "dsa",
-            usu_nascimento: "2000-10-10"
-        },
-        {
-            usu_id:4,
-            usu_nome: "abc",
-            usu_nascimento: "2000-10-10"
-        }
-    ])
-    const [esps, setEsps] = useState([
-        {
-            esp_id:1,
-            esp_mac: "aa"
-        },
-        {
-            esp_id:2,
-            esp_mac: "aaa"
-        },
-        {
-            esp_id:3,
-            esp_mac: "aaaa"
-        },
-        {
-            esp_id:4,
-            esp_mac: "aaaaa"
-        },
-        {
-            esp_id:5,
-            esp_mac: "aaaaaa"
-        },
-    ])
+import { CadastroSuccess, ErrorDados } from "../../service/swal"
+const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
+    const [usuarios, setUsuarios] = useState([])
+    const [esps, setEsps] = useState([])
 
     const [espSelecionado, setEspSelecionado] = useState();
     const [usuarioSelecionado, setUsuarioSelecionado] = useState()
-    const [values, setValues] = useState();
-    // REQUEST API
+    // REQUEST API OS ESP E USUÁRIOS
     useEffect( ()=>{
         
         const fetchData = async () =>{
@@ -65,18 +23,59 @@ const UsuarioEsp= ({esp})=>{
         }
         fetchData();
     },[])
+    
+    // SE ESP EXISTIR(primeira conexão) FORÇA O VALOR DO ESPSELECIONADO SER frist_request
+    useEffect(()=>{ setEspSelecionado("frist_request") },[esp])
 
-
+    // CADASTRA O USUÁRIOS ESP
     const CadastroUsuariosEsp = async ()=>{
+
+        //VERIFICA SE O USUÁRIO E ESP FOI SELECIONADO
+        if (!usuarioSelecionado) {
+            ErrorDados({campo:"selecione um usuário"})
+            return;
+        }
+        if (!espSelecionado) {
+            ErrorDados({campo:"selecione um esp"})
+            return;
+        }
+        
+
         const fetchData = async () =>{
+
                 try {
+                    let id;
+
+                    // SE FOR A PRIMEIRA CONEXÃO DO ESP CAI AQUI DENTRO PRA CADASTRAR O ESP
+                    if (espSelecionado ==="frist_request") {
+                        try {
+                            const respostaEsp = await ConnApi.post("/esp",{ esp_mac:esp.esp_mac });
+                            // PEGA O ID DO ESP
+                            id =respostaEsp.data.data[0].insertId
+                            console.log(respostaEsp);
+                            
+                        } catch (error) {
+                            return console.log(error)
+                        }
+                        
+                    }
+                    // DADOS PARA CADASTRAR O USUARIOSESP
                     const dados = {
-                        esp_id: espSelecionado,
+                        //SE O ID RECEBER UM VALOR ELE E SELECIONADO SENÃO VAI O ESPSELECIONADO COM UM ID DENTRO
+                        esp_id: id? id:espSelecionado,
                         usu_id: usuarioSelecionado
                     }
+                    // CADASTRA O USUARIOSESP
                     const resposta = await ConnApi.post(`/usuariosEsp`, dados)
                     console.log(resposta);
-                    
+                    if (resposta.data.message == "suscesso") {
+                        // SE DEU BOM
+                        CadastroSuccess();
+
+                        // ESQUECE O ESP CADASTRADO
+                        setEspMac(prevItens => prevItens.filter(item => item.esp_mac !== esp.esp_mac))
+                        setEsp("");
+                    }
                 } catch (error) {
                     console.log(error);
                 }
@@ -84,7 +83,7 @@ const UsuarioEsp= ({esp})=>{
             fetchData();
     }
 
-    useEffect(()=>{ console.log(espSelecionado) },[espSelecionado])
+
     return(
         <div className="usuariosesp df jcsa ac fdc w600 h400 wmax090 br20">
             <div className="fs1_5 p002">
@@ -116,7 +115,11 @@ const UsuarioEsp= ({esp})=>{
                         <div className="w045_80 w045 tal">
                             ESP SELECIONADO
                         </div>
-                        <select name="esp" className="selectue w045_80 w045 h30 br5" id="esp" 
+                        <select 
+                            name="esp" 
+                            className="selectue w045_80 w045 h30 br5" 
+                            id="esp" 
+                            value={espSelecionado}
                             onChange={
                                 (e)=>{
                                     setEspSelecionado(e.target.value)
@@ -125,18 +128,16 @@ const UsuarioEsp= ({esp})=>{
                         >
                             <option value="" selected hidden></option>
                             {
-                                esp
-                                ?
-                                <option value={esp.esp_id} selected>{esp.Mensagem}</option>
-                                :
-                                esps
-                                ?
-                                esps.map(
-                                    esp =>
-                                        <option value={esp.esp_id}>{esp.esp_mac}</option>
-                                )
-                                :
-                                ""
+                                 esp
+                                 ? 
+                                    <option value="frist_request" selected>{esp.esp_mac}</option>
+                                    
+                                 : 
+                                    esps?.map(item => (
+                                     <option key={item.esp_id} value={item.esp_id}>
+                                       {item.esp_mac}
+                                     </option>
+                                   ))
                             }
                         </select>
                     </div>
