@@ -57,7 +57,7 @@ const Header = ({setTela}) => {
                 </div>
 
                 {/* Imagem-Logo */}
-                <img src="/img/logoproj2.jpeg" class="logoproj" />
+                <img src="/img/logoproj2.jpg" class="logoproj" />
                 
                  {/* Botão de saída */}
                  <button className="header-button-saida"
