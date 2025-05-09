@@ -16,13 +16,6 @@ h2 {
     background-color: #3a3a4a;
 }
 
-.profile-pic {
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1e1e28;
-}
 
 .profile-text {
     color: #ffffff;
@@ -61,7 +54,7 @@ h2 {
     color: #2e2e3a;
     padding: 0.8vw 1.6vh;
     width: 55%;
-    border-radius: 2.3vh;
+    border-radius: 1vh;
     cursor: pointer;
     border: none;
 }

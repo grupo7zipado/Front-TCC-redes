@@ -8,6 +8,8 @@ const Header = ({setTela}) => {
     const [mostrarMensagem, setMostrarMensagem] = useState(false);
     const cardRef = useRef(null);
 
+    let timeoutId;
+
     // Fecha o card quando clicar fora dele
     useEffect(() => {
         const handleClickFora = (event) => {
@@ -57,7 +59,7 @@ const Header = ({setTela}) => {
                 </div>
 
                 {/* Imagem-Logo */}
-                <img src="/img/logoproj2.jpg" class="logoproj" />
+                <img src ="/img/logoproj2.jpg" class="logoproj" />
                 
                  {/* Botão de saída */}
                  <button className="header-button-saida"
@@ -79,13 +81,27 @@ const Header = ({setTela}) => {
             </div>
             {/* Card do Menu */}
             {mostrarCard && (
-                <div className="menu-card" ref={cardRef}>
-                    <button className="menu-item" onClick={()=>{setTela("card")}} >Adicionar Usuário</button>
+                <div className="menu-card" ref={cardRef}
+                
+                onMouseEnter={() => setMostrarCard(true)}
+                onMouseLeave={() => {
+                  if (!cardAberto) setMostrarCard(false);
+                }}>
+                    <button className="menu-item" onClick={()=>{setTela("card")}} >Home</button>
                     <button className="menu-item" onClick={()=>{setTela("cadUser")}} >Adicionar Usuário</button>
                     <button className="menu-item" onClick={()=>{setTela("espUser")}} >Esp Usuário</button>
 
                     <button className="menu-item">Configurações</button>
-                    <button className="menu-item">Ajuda</button>
+                    <button
+                        className="menu-item border"
+                        style={{ borderBottomRightRadius: "110px" }}
+                        >
+                        Ajuda
+                    </button>
+
+                    
+                    
+                    
                 </div>
             )}
         </header>
