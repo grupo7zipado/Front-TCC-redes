@@ -5,17 +5,17 @@
     left: 0;
     margin: 0;
     width: 100%;
-    height: 8.2vh; /* Altura baseada na altura da tela */
+    height: 8.3vh; /* Altura baseada na altura da tela */
     position: absolute; /* Fixa no topo */
     background: #000000; /* Fundo preto */
-    color: rgb(255, 255, 255); /* Texto branco */
+    /* color: rgb(255, 255, 255); Texto branco */
     font-size: 28px;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     display: flex; /* Layout flexível */
     justify-content: space-between; /* Espaço entre os filhos */
     align-items: center; /* Alinha os itens verticalmente */
-    border-bottom: 2px solid #242325; /* Borda inferior */
+    border-bottom: 2px solid #6821af; /* Borda inferior */
 }
 
 /* Container dos botões do header */
@@ -39,20 +39,20 @@
 /* Efeito hover de qualquer botão com classe .header-button */
 .header-button:hover {
     transition: 1s;
-    background: #242325;
+    background: #000000;
 }   
 
 .logoproj{
     position: relative;
     left: -45%;
-    width: 80px;
+    width: 60px;
     height: auto; /* mantém proporção */
 }
 
 /* Botão de saída */
 .header-button-saida {
     transition: 1s;
-    background: #242325;
+    background:#000000;
     border: none;
     padding: 1%;
     cursor: pointer;

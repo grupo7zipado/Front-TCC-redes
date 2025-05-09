@@ -65,7 +65,8 @@ const Middle = ({tela, setTela}) =>{
                         :
                         tela === "espUser"
                         ?
-                        <UsuarioEsp esp={esp}/> 
+                        // <UsuarioEsp esp={esp}/> 
+                        ""
                         :
                         tela === "cadUser"
                         ?

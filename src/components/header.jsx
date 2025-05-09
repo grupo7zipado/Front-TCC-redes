@@ -57,7 +57,7 @@ const Header = ({setTela}) => {
                 </div>
 
                 {/* Imagem-Logo */}
-                <img src="/img/logoproj2.jpeg" class="logoproj" />
+                <img src="./img/logoproj2.jpg" class="logoproj" />
                 
                  {/* Botão de saída */}
                  <button className="header-button-saida"
@@ -85,7 +85,7 @@ const Header = ({setTela}) => {
                     <button className="menu-item" onClick={()=>{setTela("espUser")}} >Esp Usuário</button>
 
                     <button className="menu-item">Configurações</button>
-                    <button className="menu-item">Ajuda</button>
+                    <button className="menu-item">Suporte</button>
                 </div>
             )}
         </header>
