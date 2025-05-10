@@ -58,7 +58,7 @@
 /* Botão de saída */
 .header-button-saida {
     transition: 1s;
-    background: #0c0c0c;
+    background: #000000;
     border: none;
     padding: 1%;
     cursor: pointer;
