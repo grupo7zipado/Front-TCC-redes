@@ -1,8 +1,4 @@
 import "./card.css"
-import ConnApi from "../../service/conn"
-import { useState } from "react"
-import { useEffect } from "react"
-import mqtt from "mqtt"
 const Card = ({setUser, setTela, dados, setDados})=>{
 
     // REQUEST API

@@ -22,18 +22,19 @@ const Middle = ({tela, setTela}) =>{
           "usu_id": 2,
           "esp_id": 2,
           "usu_nome": "Arnaldo Miguel da Silva",
-          "usu_nascimento": "2000-04-01T03:00:00.000Z",
+          "usu_nascimento": "01-04-2000",
           "temp_valor": "67",
           "bpm_valor": "80",
           "oxig_valor": "28"
         }
     ])
+    const [usuValues , setUsuValues]= useState([])
 
     useEffect(() => {
         dadosRef.current = dados;
     }, [dados]);
     
-    useEffect(()=>{ console.log(user) },[user])
+    // useEffect(()=>{ console.log(user) },[user])
     // useEffect(()=>{ console.log(tela) },[tela])
     // useEffect(()=>{ console.log(dados) },[dados])
 
@@ -107,11 +108,15 @@ const Middle = ({tela, setTela}) =>{
         };
     }, []);
 
+
+    //QUANDO O CARA CLICA NO CARDZINHO DO NOVO ESP
     const newEsp = (esp)=>{
         setEsp(esp);
         setTela("espUser")
     }
 
+
+    //TROCA AS SUBSCRIÇÕES DE ACORDO COM A TELA 
     useEffect(() => {
         if( tela === "card"){
             client.subscribe('+/temperatura');
@@ -128,21 +133,7 @@ const Middle = ({tela, setTela}) =>{
         }
         if (tela === "grafico") {
             client.subscribe(`${user.esp_mac}/*`);
-            client.unsubscribe(`+/temperatura`, (err) => {
-                if (err) {
-                    console.error('Erro ao desinscrever:', err);
-                } else {
-                    console.log('Desinscrito com sucesso!');
-                }
-            })
-            client.unsubscribe(`+/bpm`, (err) => {
-                if (err) {
-                    console.error('Erro ao desinscrever:', err);
-                } else {
-                    console.log('Desinscrito com sucesso!');
-                }
-            })
-            client.unsubscribe(`+/oxigenacao`, (err) => {
+            client.unsubscribe(['+/temperatura', '+/bpm', '+/oxigenacao'], (err) => {
                 if (err) {
                     console.error('Erro ao desinscrever:', err);
                 } else {
@@ -173,7 +164,7 @@ const Middle = ({tela, setTela}) =>{
                         :
                         tela === "grafico"
                         ?
-                        <Grafico user={user}/>
+                        <Grafico user={user} usuValues = {usuValues} setUsuValues = {setUsuValues}/>
                         :
                         ""
                     }
