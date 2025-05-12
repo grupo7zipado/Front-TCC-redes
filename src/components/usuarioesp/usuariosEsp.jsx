@@ -51,8 +51,9 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                         try {
                             const respostaEsp = await ConnApi.post("/esp",{ esp_mac:esp.esp_mac });
                             // PEGA O ID DO ESP
-                            id =respostaEsp.data.data[0].insertId
+                            id = respostaEsp.data.data.insertId ?? respostaEsp.data.data.esp_id
                             console.log(respostaEsp);
+                            console.log(id);
                             
                         } catch (error) {
                             return console.log(error)

@@ -3,35 +3,24 @@ import ConnApi from "../../service/conn"
 import { useState } from "react"
 import { useEffect } from "react"
 import mqtt from "mqtt"
-const Card = ({setUser, setTela})=>{
-    const [dados, setDados] = useState([
-      {
-        "use_id": 2,
-        "usu_id": 2,
-        "esp_id": 2,
-        "usu_nome": "Arnaldo Miguel da Silva",
-        "usu_nascimento": "2000-04-01T03:00:00.000Z",
-        "temp_valor": "67",
-        "bpm_valor": "80",
-        "oxig_valor": "28"
-      }
-    ])
+const Card = ({setUser, setTela, dados, setDados})=>{
+
     // REQUEST API
-    useEffect( ()=>{
+    // useEffect( ()=>{
       
-      const fetchData = async () =>{
-        try {
-          const resposta = await ConnApi.get("/lastDataUsers")
-          console.log(resposta);
-          setDados(resposta.data.data)
-          console.log(resposta);
+    //   const fetchData = async () =>{
+    //     try {
+    //       const resposta = await ConnApi.get("/lastDataUsers")
+    //       console.log(resposta);
+    //       setDados(resposta.data.data)
+    //       console.log(resposta);
           
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      fetchData();
-    },[])
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    //   fetchData();
+    // },[])
     
     // const MQTT_BROKER = "ws://localhost:9001"; // Altere para seu broker MQTT
     // const MQTT_TOPIC =[ "oxigenacao", "bpm", "temperatura" , "esp32/envio " , "esp32/teste"]; // Altere para o tópico desejado

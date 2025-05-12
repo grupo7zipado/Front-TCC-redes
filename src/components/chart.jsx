@@ -4,25 +4,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import ConnApi from "../service/conn";
 
 
-
-let data = [
-  { time: '14:00' , temp: 36.4, bpm: 95, ox: 98 },
-  { time: '14:05' , temp: 36.8, bpm: 99, ox: 97 },
-  { time: '14:10' , temp: 36.4, bpm: 95, ox: 98 },
-  { time: '14:15' , temp: 37.0, bpm: 102, ox: 94 },
-  { time: '14:20' , temp: 37.2, bpm: 105, ox: 96 },
-  { time: '14:25' , temp: 37.0, bpm: 100, ox: 98 },
-  { time: '14:30' , temp: 36.9, bpm: 98, ox: 99 },
-  { time: '14:35' , temp: 36.9, bpm: 98, ox: 94 },
-  { time: '14:40' , temp: 36.9, bpm: 98, ox: 98 },
-  { time: '14:45' , temp: 36.2, bpm: 102, ox: 97 },
-  { time: '14:50' , temp: 36.0, bpm: 105, ox: 99 },
-  { time: '14:55' , temp: 36.3, bpm: 100, ox: 96 },
-  { time: '15:00' , temp: 36.5, bpm: 96, ox: 99 },
-
-];
-
-
 const GraficoLog = ({user}) => {
 
 
@@ -57,7 +38,7 @@ const GraficoLog = ({user}) => {
   useEffect(()=>{
     // filtra o itens de acordo com o dados_tipo e seleciona os 10 ultimos 
     setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico).slice(-10):"")
-    console.log(dadosExibidos);
+    //console.log(dadosExibidos);
     
   },[mudarGrafico])
 
