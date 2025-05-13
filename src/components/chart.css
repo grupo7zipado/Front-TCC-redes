@@ -5,6 +5,9 @@
     display: flex;
     width: 80%;
     height: 75%;
+    border: solid 1px #889ee9 ;
+    border-radius: 5vw;
+    margin-top: 2%;
 }
 .graficoEstilo{
     width: 70%;
@@ -38,7 +41,7 @@
 .style-button:hover{
     cursor: pointer;
     scale: calc(1.12);
-    background-color: cadetblue;
+    background-color: #889ee9;
 }
  /* Responsividade do gráfico para diferentes dispositivos */
 

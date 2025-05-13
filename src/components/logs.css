@@ -1,5 +1,5 @@
 .logset{
-    background-color: #1949d8;
+    background-color: #676b8c;
     width: 80%;
     /* width: 95vw; */
     height: 50px;
@@ -9,6 +9,9 @@
     justify-content: space-around;
     list-style: none;
     margin: 2%;
+    border: solid 0.5px #f3f3f3; 
+    border-radius: 9.7vh;
+    
 }
 
 .com-log {
@@ -16,7 +19,9 @@
    height: 50px;
    text-align: center;
    align-content: center;
-   
+   /* border-left: solid 0.5px #889ee9;
+   border-right: solid 0.5px #889ee9; */
+  
 }
 .titulo-log{
     font-size: 0.7rem;
