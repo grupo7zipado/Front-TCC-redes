@@ -1,5 +1,58 @@
+import { useEffect, useState } from "react";
+import { useMQTT } from "../../service/mqtt";
 import "./card.css"
-const Card = ({setUser, setTela, dados, setDados})=>{
+import ConnApi from "../../service/conn";
+const Card = ({setUser, setTela})=>{
+  const [ dados, setDados] = useState([
+    {
+      "use_id": 2,
+      "usu_id": 2,
+      "esp_id": 2,
+      "usu_nome": "Arnaldo Miguel da Silva",
+      "usu_nascimento": "01-04-2000",
+      "temp_valor": "67",
+      "bpm_valor": "80",
+      "oxig_valor": "28"
+    }
+  ])
+  const { client, isConnected } = useMQTT();
+  useEffect(() => {
+    if (client && isConnected) {
+
+      const topic = [ '+/temperatura', '+/bpm', '+/oxigenacao'];
+
+      client.subscribe(topic, (err) => {
+        if (err) {
+          console.error('Erro ao se inscrever:', err);
+        } else {
+          console.log(`Inscrito no tópico: ${topic}`);
+        }
+      });
+
+      const handleMessage = (topic, message) => {
+        console.log(`Mensagem recebida em ${topic}: ${message.toString()}`);
+      };
+
+      client.on('message', handleMessage);
+
+      return () => {
+        client.unsubscribe(topic);
+        client.off('message', handleMessage);
+      };
+    }
+  }, [client, isConnected]);
+
+
+    // REQUEST API
+    const lastDataUsers = async () =>{
+      try {
+      const resposta = await ConnApi.get("/lastDataUsers")
+      setDados(resposta.data.data)
+      } catch (error) {
+      console.log(error);
+      }
+    }
+    useEffect(()=>{ lastDataUsers() },[])
 
     // REQUEST API
     // useEffect( ()=>{
