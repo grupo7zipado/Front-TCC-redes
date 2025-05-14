@@ -1,0 +1,55 @@
+.config {
+    width: 40vw;
+    height: 80vh;
+    position: absolute;
+    top: 14vh;
+    background-color: #94a5ce30;
+    border-radius: 8vw;
+    border: solid 3px #889ee9;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: none;
+    justify-content: space-evenly;
+}
+
+.campo-config {
+    width: 80%;
+    padding: 2%;
+    background-color: #14141414;
+    display: flex;
+    border-radius: 8vw;
+    flex-direction: column;
+
+}
+
+.lista-config {
+    background-color: #85546124;
+    border: solid 2px #889ee9;
+    border-radius: 8vw;
+    margin: 2%;
+}
+
+.item{
+   
+    display: flex;
+  
+}
+
+.option-config {
+    width: 50vw;
+}
+
+.excluir-option {
+    width: 30vw;
+    background: transparent;
+    border: none;
+    border-left: solid 2px #889ee9 ;
+    border-radius: 1vw;
+}
+
+.excluir-option:hover {
+    background: #ac2323;
+}

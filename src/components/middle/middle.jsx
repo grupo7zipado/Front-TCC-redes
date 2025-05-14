@@ -9,6 +9,7 @@ import Teste from "../teste"
 import mqtt from "mqtt"
 import ConnApi from "../../service/conn"
 import { MQTTProvider, useMQTT } from "../../service/mqtt"
+import Config from "../configuracao/config"
 const Middle = ({tela, setTela}) =>{
     //const [subInscrito, setSubInscrito] = useState(false);
     const [requests_esp, setEspMac] = useState([]);
@@ -192,6 +193,10 @@ const Middle = ({tela, setTela}) =>{
                             tela === "grafico"
                             ?
                             <Grafico user={user} usuValues = {usuValues} setUsuValues = {setUsuValues}/>
+                            :
+                            tela === "config"
+                            ?
+                            <Config/>
                             :
                             ""
                         }

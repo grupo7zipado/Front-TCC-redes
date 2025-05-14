@@ -91,7 +91,7 @@ const Header = ({setTela}) => {
                     <button className="menu-item" onClick={()=>{setTela("cadUser")}} >Adicionar Usuário</button>
                     <button className="menu-item" onClick={()=>{setTela("espUser")}} >Esp Usuário</button>
 
-                    <button className="menu-item">Configurações</button>
+                    <button className="menu-item" onClick={()=>{setTela("config")}}>Configurações</button>
                     <button
                         className="menu-item border"
                         style={{ borderBottomRightRadius: "110px" }}
