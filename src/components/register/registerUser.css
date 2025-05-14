@@ -1,5 +1,5 @@
 .register-container {
-  background-color: #2e2e3a;
+  background-color: #2c2863;
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
 }
 
@@ -10,10 +10,9 @@ h2 {
 }
 
 .form-wrapper {
-    border-radius: 0.5;
     display: flex;
     gap: 4vh;
-    background-color: #3a3a4a;
+    background-color: #221f4b
 }
 
 
@@ -36,7 +35,7 @@ h2 {
     min-height: 50px;
     height: 25%;
     width: 100%;
-    background-color: #2e2e3a;
+    background-color: #110f2b;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -49,9 +48,10 @@ h2 {
 }
 
 .submit-button {
+    transition: 0.3s;
     margin-top: 2.5vh;
     background-color: #ffffff;
-    color: #2e2e3a;
+    color: #000000;
     padding: 0.8vw 1.6vh;
     width: 55%;
     border-radius: 1vh;
@@ -60,5 +60,6 @@ h2 {
 }
 
 .submit-button:hover {
-    background-color: #f0f0f0;
+    transition: 0.3s;
+    background-color: #d6d6d6;
 }
