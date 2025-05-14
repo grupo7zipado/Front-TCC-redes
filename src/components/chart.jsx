@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./chart.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import ConnApi from "../service/conn";
+import { useMQTT } from "../service/mqtt";
 
 
 const GraficoLog = ({user}) => {
@@ -41,6 +42,49 @@ const GraficoLog = ({user}) => {
     //console.log(dadosExibidos);
     
   },[mudarGrafico])
+
+
+
+  const { client, isConnected } = useMQTT();
+  useEffect(() => {
+    if (client && isConnected) {
+
+      const topic = `${user.esp_mac}/#`;
+      client.unsubscribe(['+/temperatura', '+/bpm', '+/oxigenacao'], (err) => {
+          if (err) {
+              console.error('Erro ao desinscrever:', err);
+          } else {
+              console.log('Desinscrito com sucesso!');
+          }
+      })
+      client.subscribe(topic, (err) => {
+        if (err) {
+          console.error('Erro ao se inscrever:', err);
+        } else {
+          console.log(`Inscrito no tópico: ${topic}`);
+        }
+      });
+
+      const handleMessage = (topic, message) => {
+        const [esp_mac, action] = topic.split('/');
+        console.log(JSON.parse(message.toString()));
+        
+        if (esp_mac === user.esp_mac) {
+          setValues(prevItens => [...prevItens, JSON.parse(message.toString())]);
+        }
+      };
+
+      client.on('message', handleMessage);
+
+      return () => {
+        client.unsubscribe(topic);
+        client.off('message', handleMessage);
+      };
+    }
+  }, [client, isConnected]);
+
+
+
 
   return (
     <section className="grafico-area df ac jcc ">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useMQTT } from "../../service/mqtt";
 import "./card.css"
 import ConnApi from "../../service/conn";
-const Card = ({setUser, setTela})=>{
+const Card = ({setUser, setTela, user})=>{
   const [ dados, setDados] = useState([
     {
       "use_id": 2,
@@ -20,7 +20,13 @@ const Card = ({setUser, setTela})=>{
     if (client && isConnected) {
 
       const topic = [ '+/temperatura', '+/bpm', '+/oxigenacao'];
-
+      client.unsubscribe(`${user.esp_mac}/*`, (err) => {
+          if (err) {
+              console.error('Erro ao desinscrever:', err);
+          } else {
+              console.log('Desinscrito com sucesso!');
+          }
+      })
       client.subscribe(topic, (err) => {
         if (err) {
           console.error('Erro ao se inscrever:', err);
@@ -30,7 +36,31 @@ const Card = ({setUser, setTela})=>{
       });
 
       const handleMessage = (topic, message) => {
-        console.log(`Mensagem recebida em ${topic}: ${message.toString()}`);
+        console.log("adass");
+        
+        const [esp_mac, action] = topic.split('/');
+        if (action === "temperatura"  || action === "bpm" || action === "oxigenacao") {
+            const menssage = JSON.parse(message.toString());
+            const use_id = menssage.use_id;
+            const dados_tipo = menssage.dados_tipo
+            const dados_valor = menssage.dados_valor
+            let chave
+            if (dados_tipo == "temperatura") {
+            chave = "temp_valor"
+            }
+            if (dados_tipo == "bpm") {
+            chave = "bpm_valor"
+            }
+            if (dados_tipo == "oxigenacao") {
+            chave = "oxig_valor"
+            }
+            setDados(
+                (prevData)=> 
+                    prevData.map(
+                        dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+                    )
+            )
+        }
       };
 
       client.on('message', handleMessage);

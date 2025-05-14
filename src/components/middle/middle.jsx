@@ -179,7 +179,7 @@ const Middle = ({tela, setTela}) =>{
 
                             tela === "card"
                             ?
-                            <Card setUser = {setUser} setTela = {setTela}/>
+                            <Card setUser = {setUser} setTela = {setTela} user={user}/>
                             :
                             tela === "espUser"
                             ?
