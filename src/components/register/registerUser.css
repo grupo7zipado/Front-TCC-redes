@@ -45,7 +45,16 @@ h2 {
     border-radius: 0.5vh;
     border: none;
     outline: none;
+    transition: all 0.4s ease-in-out;
 }
+
+.input-field:valid {
+border-bottom: solid 1px #aaa;
+scale: calc(1.05);
+
+}
+
+
 
 .submit-button {
     transition: 0.3s;

@@ -73,6 +73,7 @@ const RegisterUser = () => {
                             const apenasLetras = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
                             setNome(apenasLetras);
                         }}
+                        required
                     />
 
                     <input 
@@ -84,6 +85,7 @@ const RegisterUser = () => {
                             const apenasLetras = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
                             setSobrenome(apenasLetras);
                         }}
+                        required
                     />
                     <input 
                         type="date" 
@@ -91,6 +93,7 @@ const RegisterUser = () => {
                         name='nascimento'
                         value={nascimento}
                         onChange={(e)=>{setNascimento(e.target.value)}}
+                        required
                     />
                 </div>
             </div>
