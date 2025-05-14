@@ -35,13 +35,13 @@ const GraficoLog = ({user}) => {
 
   const [dadosExibidos , setDadosExibidos] = useState("");
 
-
   useEffect(()=>{
     // filtra o itens de acordo com o dados_tipo e seleciona os 10 ultimos 
     setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico).slice(-10):"")
     //console.log(dadosExibidos);
+    console.log(values);
     
-  },[mudarGrafico])
+  },[mudarGrafico,values])
 
 
 
@@ -67,10 +67,19 @@ const GraficoLog = ({user}) => {
 
       const handleMessage = (topic, message) => {
         const [esp_mac, action] = topic.split('/');
-        console.log(JSON.parse(message.toString()));
+
+        //LOG
         
         if (esp_mac === user.esp_mac) {
-          setValues(prevItens => [...prevItens, JSON.parse(message.toString())]);
+          
+          // TRANSFORMA A MESSAGEM EM JSON
+          const novoItem = JSON.parse(message.toString());
+
+          //TROCA O VALOR DO DADO PARA NUMBER
+          novoItem.dados_valor =  Number(novoItem.dados_valor);
+
+          //ADICIONA ELE NO ARRAY DE VALORES
+          setValues(prevItens => [...prevItens, novoItem]);
         }
       };
 
