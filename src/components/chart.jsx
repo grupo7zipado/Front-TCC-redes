@@ -50,6 +50,8 @@ const GraficoLog = ({user}) => {
     if (client && isConnected) {
 
       const topic = `${user.esp_mac}/#`;
+      console.log(topic);
+      
       client.unsubscribe(['+/temperatura', '+/bpm', '+/oxigenacao'], (err) => {
           if (err) {
               console.error('Erro ao desinscrever:', err);
@@ -77,7 +79,7 @@ const GraficoLog = ({user}) => {
 
           //TROCA O VALOR DO DADO PARA NUMBER
           novoItem.dados_valor =  Number(novoItem.dados_valor);
-
+          
           //ADICIONA ELE NO ARRAY DE VALORES
           setValues(prevItens => [...prevItens, novoItem]);
         }

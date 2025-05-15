@@ -10,11 +10,12 @@ import mqtt from "mqtt"
 import ConnApi from "../../service/conn"
 import { MQTTProvider, useMQTT } from "../../service/mqtt"
 import Config from "../configuracao/config"
+import Sobre from "../sobre/sobre"
 const Middle = ({tela, setTela}) =>{
     //const [subInscrito, setSubInscrito] = useState(false);
     const [requests_esp, setEspMac] = useState([]);
     const [ user, setUser] = useState("")
-    const [ esp, setEsp] = useState("")
+    const [ esp, setEsp] = useState([])
     //const conectadoRef = useRef(false);
     //const dadosRef = useRef([]);
     // const [ dados, setDados] = useState([
@@ -47,7 +48,10 @@ const Middle = ({tela, setTela}) =>{
           });
     
           const handleMessage = (topic, message) => {
-            console.log(`Mensagem recebida em ${topic}: ${message.toString()}`);
+            const [esp_mac, action] = topic.split('/');
+            if (action === "request_user") {
+              setEspMac(prevItens => [...prevItens, message.toString()])
+            }
           };
     
           client.on('message', handleMessage);
@@ -198,6 +202,10 @@ const Middle = ({tela, setTela}) =>{
                             ?
                             <Config/>
                             :
+                            tela === "sobre"
+                            ?
+                            <Sobre/>
+                            :
                             ""
                         }
                         {
@@ -210,7 +218,7 @@ const Middle = ({tela, setTela}) =>{
                                             return(
                                                 <div className="RequestCard" onClick={()=>{newEsp(esp)}}>
                                                     <strong>Novo ESP conectado</strong>
-                                                    <div>MAC: {esp.esp_mac}</div>
+                                                    <div>MAC: {esp}</div>
                                                 </div>
                                             )
                                         }
