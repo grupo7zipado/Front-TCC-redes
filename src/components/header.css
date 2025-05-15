@@ -6,6 +6,7 @@
   }
   
 .header {
+    padding: 2px;
     z-index: 2; /* Garante que fique acima de outros elementos */
     top: 0;
     left: 0;
@@ -26,6 +27,9 @@
 
 /* Container dos botões do header */
 .header-buttons {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
     transition: 1s; /* Suaviza transições */
     text-align: left;
     width: 100%;
@@ -40,6 +44,8 @@
     background: #000000;
     border: none;
     cursor: pointer; /* Muda cursor pra mãozinha */
+    height: 60px;
+    width: 100px;
 }
 
 /* Efeito hover de qualquer botão com classe .header-button */
@@ -63,6 +69,20 @@
     border: none;
     padding: 1%;
     cursor: pointer;
+    height: 100%;
+    width: 100px;
+
+}
+
+.header-button-saida:hover{
+    transition: 1s;
+    background: #302f2f;
+    border: none;
+    padding: 1%;
+    cursor: pointer;
+    height: 100%;
+    width: 100px;
+
 }
 
 /* Estilização do conteúdo do botão de menu */
@@ -91,6 +111,7 @@
     align-items: center;
     width: 100%;
     font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
 /* Cartão que aparece ao abrir o menu lateral */
@@ -192,3 +213,5 @@
       text-shadow: 0 0 1px var(--shadow-color-light), 0 0 2px var(--shadow-color);
     }
   }
+
+  
