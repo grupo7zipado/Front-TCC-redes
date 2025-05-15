@@ -131,7 +131,7 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                             {
                                  esp
                                  ? 
-                                    <option value="frist_request" selected>{esp.esp_mac}</option>
+                                    <option value="frist_request" selected>{esp}</option>
                                     
                                  : 
                                     esps?.map(item => (

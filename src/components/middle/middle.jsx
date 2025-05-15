@@ -50,6 +50,8 @@ const Middle = ({tela, setTela}) =>{
           const handleMessage = (topic, message) => {
             const [esp_mac, action] = topic.split('/');
             if (action === "request_user") {
+              console.log(message.toString());
+              
               setEspMac(prevItens => [...prevItens, message.toString()])
             }
           };
