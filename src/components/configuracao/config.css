@@ -38,14 +38,18 @@
     border: solid 2px #889ee9;
     border-radius: 8vw;
     display: flex;
-  
+    height: 3vh;
+    justify-content: center;
+    align-items: center; /* centraliza verticalmente */
+    text-align: center;  /* centraliza texto horizontal dentro do conteúdo */
 }
 
 .option-config {
-    width: 50vw;
+    width: 70vw;
 }
 
 .excluir-option {
+    height: 3vh;
     transition: 0.2s;
     width: 30vw;
     background: transparent;
@@ -124,4 +128,15 @@
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
+  }
+
+  .barra-pesquisa {
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: 2px solid #889ee9;
+    background: #1e1e3f;
+    color: white;
+    text-align: center;
   }
