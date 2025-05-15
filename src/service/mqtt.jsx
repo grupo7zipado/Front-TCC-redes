@@ -17,7 +17,7 @@ export const MQTTProvider = ({ children }) => {
         reconnectPeriod: 1000,
       };
 
-      mqttClientInstance = mqtt.connect('ws://localhost:9001', options);
+      mqttClientInstance = mqtt.connect('ws://10.67.23.44:9001', options);
       setClient(mqttClientInstance);
 
       mqttClientInstance.on('connect', () => {
