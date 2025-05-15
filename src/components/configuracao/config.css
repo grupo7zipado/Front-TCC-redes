@@ -1,5 +1,5 @@
 .config {
-    width: 40vw;
+    width: 80vw;
     height: 80vh;
     position: absolute;
     top: 14vh;
@@ -9,14 +9,14 @@
     overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     scrollbar-width: none;
     justify-content: space-evenly;
 }
 
 .campo-config {
-    width: 80%;
+    width: 35%;
     padding: 2%;
     background-color: #14141414;
     display: flex;
@@ -26,9 +26,10 @@
 }
 
 .lista-config {
-    height: 20vh;
-   display: flex;
-   flex-direction: column;
+
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
     overflow-y: scroll;
     scrollbar-width: none;
 }
