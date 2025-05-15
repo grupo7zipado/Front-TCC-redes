@@ -51,8 +51,9 @@
 .logoproj{
     position: relative;
     left: -45%;
-    width: 60px;
+    width: auto;
     height: auto; /* mantém proporção */
+    max-height: 8.0vh;
 }
 
 /* Botão de saída */
