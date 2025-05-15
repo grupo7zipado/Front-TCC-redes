@@ -18,7 +18,7 @@ const Config = ()=>{
                 <label> Excluir Dispositivo</label>
                 <ul className="lista-config">
                     <li className="item"> 
-                        <label className="option-config">Usuario</label>
+                        <label className="option-config">Dispositivo</label>
                         <button className="excluir-option"> Excluir</button>
                     </li>
                 </ul>

@@ -95,8 +95,9 @@ const Header = ({setTela}) => {
                     <button
                         className="menu-item border"
                         style={{ borderBottomRightRadius: "110px" }}
+                        onClick={()=>{setTela("sobre")}}
                         >
-                        Ajuda
+                        Sobre
                     </button>
 
                     
