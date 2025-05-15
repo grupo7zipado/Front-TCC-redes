@@ -3,12 +3,16 @@ import "./config.css";
 
 const usuariosFake = [
   { id: 1, nome: "João" },
-  { id: 2, nome: "Maria" }
+  { id: 2, nome: "Maria" },
+  { id: 3, nome: "Jonas" },
+  { id: 4, nome: "Matheus" },
+  { id: 5, nome: "Felipe" },
+  { id: 6, nome: "Allan" }
 ];
 
 const dispositivosFake = [
-  { id: 101, nome: "ESP - João" },
-  { id: 102, nome: "ESP32 - Maria" }
+  { id: 101, nome: "ESP  (João)" },
+  { id: 102, nome: "ESP  (Maria)" }
 ];
 
 const Config = () => {
