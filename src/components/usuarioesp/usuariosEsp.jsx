@@ -2,12 +2,20 @@ import { useEffect, useState } from "react"
 import "./styles.css"
 import ConnApi from "../../service/conn"
 import { CadastroSuccess, ErrorDados } from "../../service/swal"
+import { useMQTT } from "../../service/mqtt"
 const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
     const [usuarios, setUsuarios] = useState([])
     const [esps, setEsps] = useState([])
 
     const [espSelecionado, setEspSelecionado] = useState();
     const [usuarioSelecionado, setUsuarioSelecionado] = useState()
+    const [use_id , setUse_id] = useState();
+
+    const { client, isConnected } = useMQTT();
+    
+
+    useEffect(()=>{ console.log(esp) },[esp])
+    
     // REQUEST API OS ESP E USUÁRIOS
     useEffect( ()=>{
         
@@ -41,6 +49,7 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
         }
         
 
+
         const fetchData = async () =>{
 
                 try {
@@ -49,7 +58,7 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                     // SE FOR A PRIMEIRA CONEXÃO DO ESP CAI AQUI DENTRO PRA CADASTRAR O ESP
                     if (espSelecionado ==="frist_request") {
                         try {
-                            const respostaEsp = await ConnApi.post("/esp",{ esp_mac:esp.esp_mac });
+                            const respostaEsp = await ConnApi.post("/esp",{ esp_mac:esp });
                             // PEGA O ID DO ESP
                             id = respostaEsp.data.data.insertId ?? respostaEsp.data.data.esp_id
                             console.log(respostaEsp);
@@ -69,13 +78,33 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                     // CADASTRA O USUARIOSESP
                     const resposta = await ConnApi.post(`/usuariosEsp`, dados)
                     console.log(resposta);
+                    
                     if (resposta.data.message == "suscesso") {
-                        // SE DEU BOM
-                        CadastroSuccess();
 
-                        // ESQUECE O ESP CADASTRADO
-                        setEspMac(prevItens => prevItens.filter(item => item.esp_mac !== esp.esp_mac))
-                        setEsp("");
+                        const publicarMensagem = () => {
+                            if (client && client.connected) {
+
+
+                                console.log(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
+                                
+                                client.publish(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
+                                return true; // deu bom
+                            } else {
+                                console.warn('⚠️ Broker não conectado');
+                                return false; // deu ruim
+                            }
+                        }
+                        
+                        // Chamando e verificando o resultado
+                        if (publicarMensagem()) {
+                            CadastroSuccess(); // SE DEU BOM
+                            // ESQUECE O ESP CADASTRADO
+                            setEspMac(prevItens => prevItens.filter(item => item.esp_mac !== esp.esp_mac))
+                            setEsp("");
+                        }
+                        
+
+                        
                     }
                 } catch (error) {
                     console.log(error);
@@ -129,7 +158,7 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                         >
                             <option value="" selected hidden></option>
                             {
-                                 esp
+                                 !esp.length === 0
                                  ? 
                                     <option value="frist_request" selected>{esp}</option>
                                     

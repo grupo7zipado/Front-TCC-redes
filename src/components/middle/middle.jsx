@@ -64,6 +64,8 @@ const Middle = ({tela, setTela}) =>{
           };
         }
       }, [client, isConnected]);
+      
+    
     // useEffect(() => {
     //     dadosRef.current = dados;
     // }, [dados]);
