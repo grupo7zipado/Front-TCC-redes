@@ -1,44 +1,64 @@
-.register-container {
-  background-color: #2c2863;
-  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
-}
-
-h2 {
-    color: #ffffff;
+:root {
+    /* Cores principais (roxos e azuis escuros) */
+    --primary-bg: #3d387f;     /* Fundo principal */
+    --secondary-bg: #3d387f;   /* Fundo secundário */
+    --accent-bg: #3d387f;      /* Destaque / hover / bordas */
+  
+    /* Campos de entrada e áreas escuras */
+    --input-bg: #1f0849;       /* Input escuro */
+    --input-border: #4b478a;   /* Borda de input / realce */
+  
+    /* Texto */
+    --text-light: #ffffff;
+    --text-dark: #000000;
+  
+    /* Botões */
+    --btn-bg: #ffffff;
+    --btn-hover: #d6d6d6;
+    --btn-dark-hover: #3a375c; /* Hover para botões escuros */
+  
+    /* Extras */
+    --border-radius: 0.5vh;
+    --transition-speed: 0.3s;
+  }
+  
+  /* Register */
+  .register-container {
+    background-color: var(--primary-bg);
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    color: var(--text-light);
     font-size: 1.5rem;
-    /* margin-bottom: 1.5vw; */
-}
-
-.form-wrapper {
+  }
+  
+  .form-wrapper {
     display: flex;
     gap: 4vh;
-    background-color: #221f4b
-}
-
-
-.profile-text {
-    color: #ffffff;
+    background-color: var(--secondary-bg);
+  }
+  
+  .profile-text {
+    color: var(--text-light);
     font-size: 0.8rem;
-}
-
-.form-fields {
+  }
+  
+  .form-fields {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     gap: 1vh;
-}
-
-.input-field {
+  }
+  
+  .input-field {
     box-sizing: border-box;
     padding-left: 5%;
     min-height: 50px;
-    height: 25%;
     width: 100%;
-    background-color: #110f2b;
-    color: #ffffff;
+    background-color: var(--input-bg);
+    color: var(--text-light);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1vh;
@@ -46,29 +66,26 @@ h2 {
     border: none;
     outline: none;
     transition: all 0.4s ease-in-out;
-}
-
-.input-field:valid {
-border-bottom: solid 1px #aaa;
-scale: calc(1.05);
-
-}
-
-
-
-.submit-button {
+  }
+  
+  .input-field:valid {
+    border-bottom: solid 1px #aaa;
+    transform: scale(1.05);
+  }
+  
+  .submit-button {
     transition: 0.3s;
     margin-top: 2.5vh;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--btn-bg);
+    color: var(--text-dark);
     padding: 0.8vw 1.6vh;
     width: 55%;
     border-radius: 1vh;
     cursor: pointer;
     border: none;
-}
-
-.submit-button:hover {
-    transition: 0.3s;
-    background-color: #d6d6d6;
-}
+  }
+  
+  .submit-button:hover {
+    background-color: var(--btn-hover);
+  }
+  
