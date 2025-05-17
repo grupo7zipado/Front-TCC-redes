@@ -99,7 +99,7 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                         if (publicarMensagem()) {
                             CadastroSuccess(); // SE DEU BOM
                             // ESQUECE O ESP CADASTRADO
-                            setEspMac(prevItens => prevItens.filter(item => item.esp_mac !== esp.esp_mac))
+                            setEspMac(prevItens => prevItens.filter(item => item !== esp))
                             setEsp("");
                         }
                         
@@ -158,10 +158,10 @@ const UsuarioEsp= ({esp, setEsp, setEspMac})=>{
                         >
                             <option value="" selected hidden></option>
                             {
-                                 !esp.length === 0
+                                
+                                 esp
                                  ? 
-                                    <option value="frist_request" selected>{esp}</option>
-                                    
+                                    <option value="frist_request" selected>{esp}</option>    
                                  : 
                                     esps?.map(item => (
                                      <option key={item.esp_id} value={item.esp_id}>

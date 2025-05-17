@@ -15,7 +15,7 @@ const Middle = ({tela, setTela}) =>{
     //const [subInscrito, setSubInscrito] = useState(false);
     const [requests_esp, setEspMac] = useState([]);
     const [ user, setUser] = useState("")
-    const [ esp, setEsp] = useState([])
+    const [ esp, setEsp] = useState()
     //const conectadoRef = useRef(false);
     //const dadosRef = useRef([]);
     // const [ dados, setDados] = useState([
