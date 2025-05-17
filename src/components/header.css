@@ -76,12 +76,13 @@
 
 .header-button-saida:hover{
     transition: 1s;
-    background: #302f2f;
+    background: #0f0f0f;
     border: none;
     padding: 1%;
     cursor: pointer;
     height: 100%;
     width: 100px;
+    border-radius: 0.7vh;
 
 }
 
