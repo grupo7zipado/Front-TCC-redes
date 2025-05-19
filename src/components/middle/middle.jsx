@@ -12,10 +12,20 @@ import { MQTTProvider, useMQTT } from "../../service/mqtt"
 import Config from "../configuracao/config"
 import Sobre from "../sobre/sobre"
 const Middle = ({tela, setTela}) =>{
+
+
     //const [subInscrito, setSubInscrito] = useState(false);
+  
+    //RECEBE TODOS OS REQUEST_USER
     const [requests_esp, setEspMac] = useState([]);
-    const [ user, setUser] = useState("")
-    const [ esp, setEsp] = useState()
+  
+    //RECEBE A INFORMAÇÃO DO USUÁRIO SELECIONADO PELO CARD E ENVIA PARA O GRAFICO
+    const [ user, setUser] = useState("");
+  
+    //RECEBE O ESP DO CARD(request_user) SELECIONADO
+    const [ esp, setEsp] = useState();
+
+
     //const conectadoRef = useRef(false);
     //const dadosRef = useRef([]);
     // const [ dados, setDados] = useState([
@@ -65,7 +75,14 @@ const Middle = ({tela, setTela}) =>{
         }
       }, [client, isConnected]);
       
-    
+      //QUANDO CLICA NO CARDZINHO DO NOVO ESP
+      const newEsp = (esp)=>{
+          //RECEBE O VALOR DO ESP DO CARD SELECIONADO
+          setEsp(esp);
+          //MANDA PRA TELA DE CADASTRO
+          setTela("espUser");
+      }
+
     // useEffect(() => {
     //     dadosRef.current = dados;
     // }, [dados]);
@@ -145,11 +162,6 @@ const Middle = ({tela, setTela}) =>{
     // }, []);
 
 
-    //QUANDO O CARA CLICA NO CARDZINHO DO NOVO ESP
-    const newEsp = (esp)=>{
-        setEsp(esp);
-        setTela("espUser")
-    }
 
 
     //TROCA AS SUBSCRIÇÕES DE ACORDO COM A TELA 
