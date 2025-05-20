@@ -36,28 +36,35 @@ const Card = ({setUser, setTela, user})=>{
       });
 
       const handleMessage = (topic, message) => {
-        console.log("adass");
-        
+                
         const [esp_mac, action] = topic.split('/');
         if (action === "temperatura"  || action === "bpm" || action === "oxigenacao") {
             const menssage = JSON.parse(message.toString());
+            console.log(menssage.use_id);
+            console.log(menssage.dados_tipo);
+            console.log(menssage.dados_valor);
+            
             const use_id = menssage.use_id;
             const dados_tipo = menssage.dados_tipo
             const dados_valor = menssage.dados_valor
             let chave
             if (dados_tipo == "temperatura") {
-            chave = "temp_valor"
+              chave = "temp_valor"
+              console.log("a");
             }
             if (dados_tipo == "bpm") {
-            chave = "bpm_valor"
+              chave = "bpm_valor"
+              console.log("b");
             }
             if (dados_tipo == "oxigenacao") {
-            chave = "oxig_valor"
+              console.log("c");
+              chave = "oxig_valor"
             }
             setDados(
                 (prevData)=> 
                     prevData.map(
-                        dataItem=> dataItem.use_id === use_id ? { ...dataItem , [chave] : dados_valor} : dataItem
+                        //use_id são de tipos diferentes
+                        dataItem=> String(dataItem.use_id) === String(use_id) ? { ...dataItem , [chave] : dados_valor} : dataItem
                     )
             )
         }
