@@ -40,9 +40,6 @@ const Card = ({setUser, setTela, user})=>{
         const [esp_mac, action] = topic.split('/');
         if (action === "temperatura"  || action === "bpm" || action === "oxigenacao") {
             const menssage = JSON.parse(message.toString());
-            console.log(menssage.use_id);
-            console.log(menssage.dados_tipo);
-            console.log(menssage.dados_valor);
             
             const use_id = menssage.use_id;
             const dados_tipo = menssage.dados_tipo
@@ -50,14 +47,11 @@ const Card = ({setUser, setTela, user})=>{
             let chave
             if (dados_tipo == "temperatura") {
               chave = "temp_valor"
-              console.log("a");
             }
             if (dados_tipo == "bpm") {
               chave = "bpm_valor"
-              console.log("b");
             }
             if (dados_tipo == "oxigenacao") {
-              console.log("c");
               chave = "oxig_valor"
             }
             setDados(
