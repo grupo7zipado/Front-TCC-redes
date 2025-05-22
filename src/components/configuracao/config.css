@@ -64,6 +64,7 @@
     transition: 0.2s;
     cursor: pointer;
     background: #ac2323;
+    border-radius: 4vw;
 }
 .modal-overlay {
     position: fixed;
@@ -141,4 +142,15 @@
     background: #1e1e3f;
     color: white;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+   .config{
+    max-width: 750px;
+    flex-direction: column;
+   }
+   .campo-config{
+    width: 90%;
+    height: 45%;
+   }
   }
