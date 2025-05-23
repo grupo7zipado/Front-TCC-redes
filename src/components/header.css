@@ -27,9 +27,9 @@
 
 /* Container dos botões do header */
 .header-buttons {
-    margin-top: 10px;
+    /* margin-top: 10px;
     margin-left: 15px;
-    margin-right: 15px;
+    margin-right: 15px; */
     transition: 1s; /* Suaviza transições */
     text-align: left;
     width: 100%;
@@ -44,7 +44,7 @@
     background: #000000;
     border: none;
     cursor: pointer; /* Muda cursor pra mãozinha */
-    height: 60px;
+    height: 60px; 
     width: 100px;
 }
 
@@ -107,9 +107,10 @@
 
 /* Título do cabeçalho */
 .titulo {
+    background-color: aqua;
     display: flex;
     justify-content: flex-start; 
-    align-items: center;
+    /* align-items: center; */
     width: 100%;
     font-size: 1.2rem;
     margin-bottom: 15px;
@@ -185,13 +186,15 @@
 }
 
 
-
-
-
-
-
-
-
+@media (max-width: 460px) {
+    header-button{
+       max-width: 100px;
+       width: 0.4vw;
+       max-height: 60px;
+       height: 2vh;
+   
+    }
+}
 
 
 
