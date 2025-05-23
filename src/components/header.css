@@ -27,9 +27,6 @@
 
 /* Container dos botões do header */
 .header-buttons {
-    /* margin-top: 10px;
-    margin-left: 15px;
-    margin-right: 15px; */
     transition: 1s; /* Suaviza transições */
     text-align: left;
     width: 100%;
@@ -69,7 +66,7 @@
     border: none;
     padding: 1%;
     cursor: pointer;
-    height: 100%;
+    height: 60px; 
     width: 100px;
 
 }
@@ -103,6 +100,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 /* Título do cabeçalho */
@@ -110,8 +108,9 @@
     background-color: aqua;
     display: flex;
     justify-content: flex-start; 
-    /* align-items: center; */
+    align-items: center;
     width: 100%;
+    height: 60px; 
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
