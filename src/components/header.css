@@ -22,6 +22,8 @@
     display: flex; /* Layout flexível */
     justify-content: space-between; /* Espaço entre os filhos */
     align-items: center; /* Alinha os itens verticalmente */
+    flex-direction: column;
+  
     border-bottom: 2.5px solid  #889ee9; /* Borda inferior */
 }
 
@@ -32,6 +34,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between; /* Espaço entre os botões */
+  
 }
 
 /* Botão do menu lateral */
@@ -43,6 +46,8 @@
     cursor: pointer; /* Muda cursor pra mãozinha */
     height: 60px; 
     width: 100px;
+   
+ 
 }
 
 /* Efeito hover de qualquer botão com classe .header-button */
@@ -53,10 +58,26 @@
 
 .logoproj{
     position: relative;
-    left: -45%;
+ 
     width: auto;
     height: auto; /* mantém proporção */
-    max-height: 8.0vh;
+    max-height: 7vh;
+    object-fit: cover;
+ 
+
+}
+.img-logo{
+    max-width: 4vw;
+    max-height: 8vh;
+    width:4vw;
+    overflow: hidden;
+}
+
+.junta{
+    display: flex;
+    width: 10%;
+
+    align-items: center;
 }
 
 /* Botão de saída */
@@ -106,12 +127,14 @@
 /* Título do cabeçalho */
 .titulo {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: center; 
     align-items: center;
-    width: 100%;
+    width: 6%;
     height: 60px; 
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     margin-bottom: 15px;
+   
+    
 }
 
 /* Cartão que aparece ao abrir o menu lateral */
@@ -158,6 +181,8 @@
     transition: 0.2s;
     background: #221e29;
 }
+
+
 
 /* Mensagem que aparece ao passar o mouse no botão de saída */
 .mensagem-saida {
