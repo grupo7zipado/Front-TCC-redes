@@ -105,7 +105,6 @@
 
 /* Título do cabeçalho */
 .titulo {
-    background-color: aqua;
     display: flex;
     justify-content: flex-start; 
     align-items: center;
