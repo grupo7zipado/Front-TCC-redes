@@ -52,17 +52,14 @@ const Header = ({setTela}) => {
                         </svg>
                     </div>
                 </button>
-                <div className="junta">
+               
 
                     {/* Imagem-Logo */}
                     <div className="img-logo">
-                    <img src ="./img/pqpeuvogoza.png" class="logoproj" />
+                    <img src ="img\7zipLogo (2).png" class="logoproj" />
                     </div>
-                    {/* Título */}
-                    <div className="titulo">
-                        <h1>7LIFE</h1>
-                    </div>
-                </div>
+                 
+               
              
                  {/* Botão de saída */}
                 <button className="header-button-saida"

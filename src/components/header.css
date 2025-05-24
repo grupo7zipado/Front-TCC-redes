@@ -20,7 +20,7 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     display: flex; /* Layout flexível */
-    justify-content: space-between; /* Espaço entre os filhos */
+    justify-content: space-around; /* Espaço entre os filhos */
     align-items: center; /* Alinha os itens verticalmente */
     flex-direction: column;
   
@@ -31,9 +31,10 @@
 .header-buttons {
     transition: 1s; /* Suaviza transições */
     text-align: left;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between; /* Espaço entre os botões */
+ 
   
 }
 
@@ -59,26 +60,25 @@
 .logoproj{
     position: relative;
  
-    width: auto;
-    height: auto; /* mantém proporção */
-    max-height: 7vh;
+    width: 8rem;
+    height: 7vh; /* mantém proporção */
+    max-height: 13vh;
     object-fit: cover;
- 
+    background-color: transparent;
 
 }
 .img-logo{
-    max-width: 4vw;
-    max-height: 8vh;
-    width:4vw;
-    overflow: hidden;
-}
-
-.junta{
+    max-width: 12rem;
+    max-height: auto;
+    overflow: hidden; 
     display: flex;
-    width: 10%;
-
     align-items: center;
+    justify-content: center;
+    margin-left: -4.4vw;
+ 
 }
+
+
 
 /* Botão de saída */
 .header-button-saida {
@@ -125,17 +125,7 @@
 }
 
 /* Título do cabeçalho */
-.titulo {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 6%;
-    height: 60px; 
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-   
-    
-}
+
 
 /* Cartão que aparece ao abrir o menu lateral */
 .menu-card {
