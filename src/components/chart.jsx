@@ -5,29 +5,11 @@ import ConnApi from "../service/conn";
 import { useMQTT } from "../service/mqtt";
 
 
-const GraficoLog = ({values}) => {
+const GraficoLog = ({values, mudarGrafico, setMudarGrafico, dadosExibidos}) => {
 
 
 
-  const [mudarGrafico, setMudarGrafico] = useState('');
 
-
-
-  const [dadosExibidos , setDadosExibidos] = useState("");
-
-
-  useEffect(()=>{
-    // filtra o itens de acordo com o dados_tipo e seleciona os 10 ultimos 
-    setDadosExibidos(values? values.filter((item)=>item.dados_tipo == mudarGrafico).slice(-10):"")
-    //console.log(dadosExibidos);
-    console.log(values);
-    
-  },[mudarGrafico,values])
-  useEffect(()=>{
-    setMudarGrafico("temperatura")
-  },[])
-
- 
 
 
 

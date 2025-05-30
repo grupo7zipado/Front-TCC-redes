@@ -115,11 +115,11 @@ const Grafico = ({user})=>{
     return(
         <>
             <Title user={user}/>
-            <GraficoLog user={user} values={values} mudarGrafico={mudarGrafico}/>
+            <GraficoLog user={user} values={values} mudarGrafico={mudarGrafico} setMudarGrafico={setMudarGrafico} dadosExibidos={dadosExibidos}/>
             {
-                values
+                dadosExibidos
                 ?
-                values.map((e, index) => (
+                dadosExibidos.map((e, index) => (
                     <Logs key={index} values={e} />
                 ))
                 :
