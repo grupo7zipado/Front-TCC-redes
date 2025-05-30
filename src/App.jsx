@@ -1,17 +1,15 @@
-
-import './App.css'
-import './reset.css'
-import Main from './components/main/main'
-
+import './App.css';
+import './reset.css';
+import Main from './components/main/main';
+import EnviarMensagem from './components/usuarioesp/EnviarMensagem';
 
 function App() {
-
-
-  return(
-    <> 
-      <Main/>
-    </> 
-  )
+  return (
+    <>
+      <Main />
+      <EnviarMensagem />
+    </>
+  );
 }
 
-export default App
+export default App;
