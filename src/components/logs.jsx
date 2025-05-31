@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import "./logs.css"
 
 const Logs = ({values}) =>{
-    useEffect(()=>{console.log(values);
-    },[])
+    // useEffect(()=>{console.log(values);
+    // },[])
     return(
         /* define os logs do usuário com suas informações (temperatura, nivel de oxigenação do sangue, batimentos cardiacos e a hora em que os dados foram inseridos*/
         /* define os logs do usuario de sinais vitais como temperatura, oxigenação, bpm e hora em que os dados foram gerados*/

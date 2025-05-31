@@ -4,12 +4,14 @@ import Logs from "../logs"
 import Title from "../title"
 import { useMQTT } from "../../service/mqtt";
 import ConnApi from "../../service/conn";
+import EnviarMensagem from "../msg/mandarMsg";
 
 
 // Organiza o Gráfico do usuário junto dos logs de seus sinais vitais //
 const Grafico = ({user})=>{
 
-    
+      useEffect(()=>{console.log(user);
+      },[user])
       const [values, setValues] = useState();
       // REQUEST API
       useEffect( ()=>{
@@ -116,6 +118,7 @@ const Grafico = ({user})=>{
         <>
             <Title user={user}/>
             <GraficoLog user={user} values={values} mudarGrafico={mudarGrafico} setMudarGrafico={setMudarGrafico} dadosExibidos={dadosExibidos}/>
+            <EnviarMensagem esp_mac={user.esp_mac}/>
             {
                 dadosExibidos
                 ?
