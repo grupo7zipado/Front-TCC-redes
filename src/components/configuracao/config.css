@@ -42,7 +42,7 @@
     height: 3vh;
     justify-content: center;
     align-items: center; /* centraliza verticalmente */
-    text-align: center;  /* centraliza texto horizontal dentro do conteúdo */
+    text-align: center;  /* centraliza texto horizontal dentro do conteudo */
 }
 
 .option-config {

@@ -113,6 +113,4 @@ const RegisterUser = () => {
 };
 
 export default RegisterUser;
-      //  cadastro de usuario guia numero 1 
-        // se alguen mecher nesse codigo e não for eu é gay
-        // mais sou eu que tou mechendo
+   

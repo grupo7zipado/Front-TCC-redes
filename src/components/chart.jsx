@@ -20,9 +20,7 @@ const GraficoLog = ({values, mudarGrafico, setMudarGrafico, dadosExibidos}) => {
             <li onClick={() => setMudarGrafico("temperatura")} className=" style-button" > Temperatura</li>
             <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
             <li onClick={() => setMudarGrafico("oxigenacao")} className=" style-button"> Oxigenação</li>
-            {/* <li onClick={() => setMudarGrafico("temp")} className=" style-button"> Temperatura</li>
-            <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
-            <li onClick={() => setMudarGrafico("ox")} className=" style-button"> oxidação</li> */}
+      
         </ul>
         
           <div className="graficoEstilo">
@@ -45,9 +43,6 @@ const GraficoLog = ({values, mudarGrafico, setMudarGrafico, dadosExibidos}) => {
                   type="monotone" 
                   dataKey={"dados_valor"} 
                   stroke={mudarGrafico === "temperatura" ? "#fdb44b" : mudarGrafico === "bpm" ? "#f4a3a3" : "#e0e0e0"} 
-                  // dataKey={mudarGrafico} 
-                  // stroke={mudarGrafico === "temp" ? "#8884d8" : mudarGrafico === "bpm" ? "#82ca9d" : "#ff7300"} 
-                  // rever
                   name={mudarGrafico == "oxigenacao"? "OXIGENAÇÃO": mudarGrafico.toUpperCase() }
                   isAnimationActive={true} 
                   animationDuration={800} 

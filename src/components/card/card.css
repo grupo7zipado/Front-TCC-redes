@@ -1,9 +1,6 @@
 .container {
   height: 24vh;
   min-height: 200px;
-  /* margin: 2%; */
-  /* padding: 0 0.5vh; */
-  /* margin-top: 1vh ; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,10 +36,9 @@
   transition: 0.3s;
   width: 18.5vw;
 }
-
+/* estilizano os dados apresentados */
 .metric-um {
   width: 100%;
-  /* margin-top: 1vh; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,14 +51,11 @@
 }
 
 .metric-dois {
-  /* width: 7.1vw; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0.1vh; */
   border-radius: 10px;
   padding: 10px;
-  /* margin-bottom: 1vw; */
 }
 .temp {
   background: #fdb44b;
@@ -70,13 +63,11 @@
 }
 
 .metric-tres {
-  /* width: 7.5vw; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
   border-radius: 10px;
-  /* margin-bottom: 1vw; */
 }
 .spo2 {
   background: #e0e0e0;

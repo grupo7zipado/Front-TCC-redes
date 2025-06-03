@@ -1,67 +1,74 @@
 import React, { useState } from 'react';
 import { useMQTT } from '../../service/mqtt';
+import { MessageSquare } from 'lucide-react'; // ícone de mensagem
 import "./enviarMsg.css";
 
-const EnviarMensagem = ({esp_mac}) => {
+const EnviarMensagem = ({ esp_mac }) => {
   const { client, isConnected } = useMQTT();
   const [mensagem, setMensagem] = useState('');
   const [mensagemEnviada, setMensagemEnviada] = useState(false);
-  const enviarMensagem = () => {
-    
+  const [chatAberto, setChatAberto] = useState(false);
 
-    //client.publish(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
+  const enviarMensagem = () => {
     if (isConnected && client && mensagem.trim() !== '') {
       client.publish(`${esp_mac}/msg`, mensagem);
       console.log('Mensagem enviada!');
-      setMensagemEnviada(true); // mostra a mensagem
-      setTimeout(() => setMensagemEnviada(false), 3000); // some em 3s
+      setMensagemEnviada(true);
+      setTimeout(() => setMensagemEnviada(false), 3000);
       setMensagem('');
     } else {
       console.log('MQTT não conectado ou mensagem vazia.');
     }
- };
+  };
 
- return (
-  <div className="Box-MSG">
-    <h2 className="Titulo">Enviar mensagem ao display</h2>
-    {mensagemEnviada && (
-  <p style={{ color: 'lightgreen', marginTop: '10px', fontSize: '15px', position: 'absolute', height: '20px', width: '300px', left: '45px', top: '30px'
-  }}>
-    Mensagem enviada com sucesso!
-  </p>
-)}
-
-    <div style={{ position: 'relative', width: '100%' }}>
-    <textarea
-  className="msg"
-  value={mensagem}
-  onChange={(e) => setMensagem(e.target.value)}
-  placeholder="Mensagem..."
-  maxLength={100}
-  onKeyDown={(e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault(); // impede quebra de linha
-      enviarMensagem();  // chama a função
-    }
-  }}
-/>
-      <div style={{
+  return (
+    <div className='icon-mensagem' >
+      {/* Ícone flutuante */}
+      <div className='icon-chat' 
         
-        position: 'absolute',
-        bottom: '10px',
-        right: '20px',
-        fontSize: '12px',
-        color: '#ccc'
-      }}>
-        {mensagem.length}/100
+        onClick={() => setChatAberto(!chatAberto)}
+      >
+        <MessageSquare color="white" size={24} />
       </div>
-    </div>
 
-    <button className="botao" onClick={enviarMensagem}>
-      Enviar
-    </button>
-  </div>
-);
+      {/* Mini chat */}
+      {chatAberto && (
+        <div className='mini-chat'>
+  
+          <h3  className='enviar'>Enviar mensagem</h3>
+
+          {mensagemEnviada && (
+            <p className='envio'>
+              Mensagem enviada com sucesso!
+            </p>
+          )}
+
+          <textarea
+            className="textarea-chat"
+            value={mensagem}
+            onChange={(e) => setMensagem(e.target.value)}
+            placeholder="Digite sua mensagem..."
+            maxLength={100}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                enviarMensagem();
+              }
+            }}
+          />
+          <div
+          className='enviar-container'>
+            <small>{mensagem.length}/100</small>
+            <button
+            className='enviar-button' 
+            onClick={enviarMensagem} >
+              Enviar
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default EnviarMensagem;

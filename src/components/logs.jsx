@@ -9,22 +9,6 @@ const Logs = ({values}) =>{
         /* define os logs do usuario de sinais vitais como temperatura, oxigenação, bpm e hora em que os dados foram gerados*/
 <ul class="logset">
   
-    {/* <li class="com-log w025">
-        <p class="titulo-log">
-            temperatura
-        </p>
-        <label class="info-log">
-            36.4ºC
-        </label>
-    </li>
-    <li class="com-log w020">
-        <p class="titulo-log">
-            oxigenação
-        </p>
-        <label class="info-log">
-            98%
-        </label>
-    </li> */}
     <li class="com-log w020">
         <p class="titulo-log">
             {values.dados_tipo}
