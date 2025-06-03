@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useMQTT } from '../../service/mqtt';
 import { MessageSquare } from 'lucide-react'; // ícone de mensagem
 import "./enviarMsg.css";
@@ -8,7 +8,8 @@ const EnviarMensagem = ({ esp_mac }) => {
   const [mensagem, setMensagem] = useState('');
   const [mensagemEnviada, setMensagemEnviada] = useState(false);
   const [chatAberto, setChatAberto] = useState(false);
-
+  const [cardAberto, setCardAberto] = useState(false);
+  const msgRef = useRef(null);
   const enviarMensagem = () => {
     if (isConnected && client && mensagem.trim() !== '') {
       client.publish(`${esp_mac}/msg`, mensagem);
@@ -20,6 +21,24 @@ const EnviarMensagem = ({ esp_mac }) => {
       console.log('MQTT não conectado ou mensagem vazia.');
     }
   };
+ 
+  
+
+  useEffect(() => {
+          const handleClickFora = (event) => {
+              if (msgRef.current && !msgRef.current.contains(event.target)) {
+                  setChatAberto(false);
+                  setCardAberto(false);
+              }
+          };
+  
+          // Adiciona o event listener
+          document.addEventListener("mousedown", handleClickFora);
+          
+          return () => {
+              document.removeEventListener("mousedown", handleClickFora);
+          };
+      }, []);
 
   return (
     <div className='icon-mensagem' >
@@ -33,7 +52,13 @@ const EnviarMensagem = ({ esp_mac }) => {
 
       {/* Mini chat */}
       {chatAberto && (
-        <div className='mini-chat'>
+        <div className='mini-chat'
+        onMouseEnter={() => setchatAberto(true)}
+        onMouseLeave={() => {
+          if (!cardAberto) setMostrarCard(false);
+        }}
+        ref={msgRef}
+        >
   
           <h3  className='enviar'>Enviar mensagem</h3>
 
