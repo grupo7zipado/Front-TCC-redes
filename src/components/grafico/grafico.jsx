@@ -68,7 +68,8 @@ const Grafico = ({user})=>{
                 novoItem.dados_valor =  Number(novoItem.dados_valor);
       
                 //TRANFORMA O TIMESTAMP EM DATE
-                novoItem.dados_generate = new Date(novoItem.dados_generate)
+                console.log(novoItem.dados_generate);
+                novoItem.dados_generate = new Date(novoItem.dados_generate*1000)
                 .toLocaleTimeString('pt-BR', {
                   hour: '2-digit',
                   minute: '2-digit',
@@ -122,8 +123,8 @@ const Grafico = ({user})=>{
             {
                 dadosExibidos
                 ?
-                dadosExibidos.map((e, index) => (
-                    <Logs key={index} values={e} />
+                dadosExibidos.slice().reverse().map((e, index) => (
+                  <Logs key={index} values={e} />
                 ))
                 :
                 ""
