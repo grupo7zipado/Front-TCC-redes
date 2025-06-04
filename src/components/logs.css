@@ -1,7 +1,7 @@
 .logset{
     background-color: #676b8c;
     width: 80%;
-    /* width: 95vw; */
+ 
     height: 50px;
     display: flex;
     border-radius: 20px;
@@ -19,9 +19,7 @@
    height: 50px;
    text-align: center;
    align-content: center;
-   /* border-left: solid 0.5px #889ee9;
-   border-right: solid 0.5px #889ee9; */
-  
+   
 }
 .titulo-log{
     font-size: 0.7rem;

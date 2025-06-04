@@ -14,9 +14,8 @@
   
 } 
 
-/* Remove a barra de rolagem de vista, caso queira apenas estilizar*/
 .meio-pagina::-webkit-scrollbar {
-    display: none; /* Chrome, Safari e Edge */
+    display: none; 
 }
 
 .Requests {
