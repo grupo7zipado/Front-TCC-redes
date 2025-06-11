@@ -1,15 +1,11 @@
 import "./middle.css"
 import Card from "../card/card"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useEffect } from "react"
 import UsuarioEsp from "../usuarioesp/usuariosEsp"
 import RegisterUser from "../register/registerUser"
 import Grafico from "../grafico/grafico"
-// import Teste from "../teste"
-import mqtt from "mqtt"
-import ConnApi from "../../service/conn"
-import { MQTTProvider, useMQTT } from "../../service/mqtt"
-import Config from "../configuracao/config"
+import { useMQTT } from "../../service/mqtt"
 import Sobre from "../sobre/sobre"
 const Middle = ({tela, setTela}) =>{
 
@@ -94,10 +90,6 @@ const Middle = ({tela, setTela}) =>{
                             tela === "grafico"
                             ?
                             <Grafico user={user} usuValues = {usuValues} setUsuValues = {setUsuValues}/>
-                            :
-                            tela === "config"
-                            ?
-                            <Config/>
                             :
                             tela === "sobre"
                             ?
