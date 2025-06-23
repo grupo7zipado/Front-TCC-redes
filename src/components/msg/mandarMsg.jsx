@@ -12,14 +12,20 @@ const EnviarMensagem = ({ esp_mac }) => {
   const msgRef = useRef(null);
   const enviarMensagem = () => {
     if (isConnected && client && mensagem.trim() !== '') {
-      client.publish(`${esp_mac}/msg`, mensagem);
-      console.log('Mensagem enviada!');
-      setMensagemEnviada(true);
-      setTimeout(() => setMensagemEnviada(false), 3000);
-      setMensagem('');
-    } else {
-      console.log('MQTT não conectado ou mensagem vazia.');
+      try {
+        client.publish(`${esp_mac}/msg`, mensagem);
+        setMensagemEnviada(true);
+        setTimeout(() => setMensagemEnviada(false), 3000);
+        setMensagem('');
+      } catch (error) {
+        console.log(error);
+      }
+      //console.log('Mensagem enviada!');
+
     }
+    //  else {
+    //   console.log('MQTT não conectado ou mensagem vazia.');
+    // }
   };
  
   
@@ -53,9 +59,9 @@ const EnviarMensagem = ({ esp_mac }) => {
       {/* Mini chat */}
       {chatAberto && (
         <div className='mini-chat'
-        onMouseEnter={() => setchatAberto(true)}
+        onMouseEnter={() => setChatAberto(true)}
         onMouseLeave={() => {
-          if (!cardAberto) setMostrarCard(false);
+          if (!cardAberto) setCardAberto(false);
         }}
         ref={msgRef}
         >
@@ -86,7 +92,7 @@ const EnviarMensagem = ({ esp_mac }) => {
             <small>{mensagem.length}/100</small>
             <button
             className='enviar-button' 
-            onClick={enviarMensagem} >
+            onClick={()=>{enviarMensagem()}} >
               Enviar
             </button>
           </div>

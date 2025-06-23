@@ -56,7 +56,7 @@ const Header = ({setTela}) => {
 
                     {/* Imagem-Logo */}
                     <div className="img-logo">
-                    <img src ="img\7zipLogo (2).png" class="logoproj" />
+                    <img src ="img\7zipLogo (2).png" className="logoproj" />
                     </div>
                  
                

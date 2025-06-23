@@ -47,7 +47,6 @@ const RegisterUser = () => {
             if (resposta.data.message == "suscesso") {
                 CadastroSuccess();
             }
-            console.log(resposta);
         } catch (error) {
             console.log(error);
                

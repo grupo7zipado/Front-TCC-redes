@@ -35,15 +35,15 @@ const Middle = ({tela, setTela}) =>{
           client.subscribe(topic, (err) => {
             if (err) {
               console.error('Erro ao se inscrever:', err);
-            } else {
-              console.log(`Inscrito no tópico: ${topic}`);
-            }
+            } // else {
+            //   console.log(`Inscrito no tópico: ${topic}`);
+            // }
           });
     
           const handleMessage = (topic, message) => {
             const [esp_mac, action] = topic.split('/');
             if (action === "request_user") {
-              console.log(message.toString());
+              //console.log(message.toString());
               
               setEspMac(prevItens => [...prevItens, message.toString()])
             }
@@ -70,7 +70,7 @@ const Middle = ({tela, setTela}) =>{
     
     return(
         /* Função apenas para facilitar a organização da pagina*/
-        <div class="meio-pagina">
+        <div className="meio-pagina">
             {
                 <>
                         {

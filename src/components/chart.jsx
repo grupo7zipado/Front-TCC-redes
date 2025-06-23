@@ -16,7 +16,7 @@ const GraficoLog = ({values, mudarGrafico, setMudarGrafico, dadosExibidos}) => {
   return (
     <section className="grafico-area df ac jcc ">
 
-        <ul class="filtro-graphics">
+        <ul className="filtro-graphics">
             <li onClick={() => setMudarGrafico("temperatura")} className=" style-button" > Temperatura</li>
             <li onClick={() => setMudarGrafico("bpm")} className=" style-button"> BPM</li>
             <li onClick={() => setMudarGrafico("oxigenacao")} className=" style-button"> Oxigenação</li>

@@ -20,23 +20,23 @@ export const MQTTProvider = ({ children }) => {
       //IP LAB 5
       // mqttClientInstance = mqtt.connect('ws://10.67.23.26:9001', options);
       //IP LAB 6
-      mqttClientInstance = mqtt.connect('ws://10.67.23.44:9001', options);
+      // mqttClientInstance = mqtt.connect('ws://10.67.23.44:9001', options);
       //LOCALHOST
-      // mqttClientInstance = mqtt.connect('ws://localhost:9001', options);
+      mqttClientInstance = mqtt.connect('ws://localhost:9001', options);
 
       setClient(mqttClientInstance);
 
       mqttClientInstance.on('connect', () => {
-        console.log('MQTT conectado:', mqttClientInstance.options.clientId);
+        //console.log('MQTT conectado:', mqttClientInstance.options.clientId);
         setIsConnected(true);
       });
 
       mqttClientInstance.on('error', (err) => {
-        console.error('Erro MQTT:', err);
+        //console.error('Erro MQTT:', err);
       });
 
       mqttClientInstance.on('reconnect', () => {
-        console.log('Tentando reconectar...');
+        //console.log('Tentando reconectar...');
       });
     } else {
       setClient(mqttClientInstance);

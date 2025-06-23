@@ -33,7 +33,6 @@ const UsuarioEsp= (
     const { client, isConnected } = useMQTT();
     
 
-    useEffect(()=>{ console.log(esp) },[esp])
     
     // REQUEST API OS ESP E USUÁRIOS
     useEffect( ()=>{
@@ -41,7 +40,7 @@ const UsuarioEsp= (
         const fetchData = async () =>{
             try {
                 const resposta = await ConnApi.get(`/usuariosEsp`)
-                console.log(resposta);
+                //console.log(resposta);
                 setUsuarios(resposta.data.data.usuarios);
                 setEsps(resposta.data.data.esps)
             } catch (error) {
@@ -83,8 +82,8 @@ const UsuarioEsp= (
                             
                             // PEGA O ID DO ESP CADASTRADO OU 
                             id = respostaEsp.data.data.insertId ?? respostaEsp.data.data.esp_id
-                            console.log(respostaEsp);
-                            console.log(id);
+                            // console.log(respostaEsp);
+                            // console.log(id);
                             
                         } catch (error) {
                             return console.log(error)
@@ -99,7 +98,7 @@ const UsuarioEsp= (
                     }
                     // CADASTRA O USUARIOSESP
                     const resposta = await ConnApi.post(`/usuariosEsp`, dados)
-                    console.log(resposta);
+                    //console.log(resposta);
                     
                     if (resposta.data.message == "suscesso") {
                         
@@ -108,7 +107,7 @@ const UsuarioEsp= (
                             if (client && client.connected) {
 
 
-                                console.log(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
+                                //console.log(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
                                 //PUBLICA NO TOPICO esp_mac/response_user O VALOR DO NOVO ID
                                 client.publish(`${esp?esp: esps[espSelecionado-1].esp_mac}/response_user`,  String(resposta.data.data.insertId));
                                 return true; // deu bom
@@ -161,7 +160,7 @@ const UsuarioEsp= (
                                 ?
                                 usuarios.map(
                                     usuario =>
-                                        <option value={usuario.usu_id}>{usuario.usu_nome}</option>
+                                        <option value={usuario.usu_id} key={usuario.usu_id}>{usuario.usu_nome}</option>
                                 )
                                 :
                                 ""
