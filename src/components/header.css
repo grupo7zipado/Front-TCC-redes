@@ -85,7 +85,7 @@
     transition: 1s;
     background: #000000;
     border: none;
-    padding: 1%;
+    /* padding: 1%; */
     cursor: pointer;
     height: 60px; 
     width: 100px;
